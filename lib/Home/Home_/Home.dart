@@ -614,6 +614,40 @@ class _NewOrdersState extends State<NewOrders> {
     fetchResponse();
   }
 
+  void _showOrderDetails(BuildContext context, Map order) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Order ID: ${order['OrderID']}",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              SizedBox(height: 8),
+              Text("Status: ${order['status']}"),
+              SizedBox(height: 8),
+              Text("Items: ${order['Items']}"),
+              SizedBox(height: 8),
+              Text("Pickup Date: ${order['PickupDate']}"),
+              SizedBox(height: 8),
+              Text("Pickup Time: ${order['PickupTime']}"),
+              SizedBox(height: 8),
+              Text("Delivery Date: ${order['DeliveryDate']}"),
+              SizedBox(height: 8),
+              Text("Delivery Time: ${order['DeliveryTime']}"),
+              // Add more details as needed
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -628,117 +662,122 @@ class _NewOrdersState extends State<NewOrders> {
                   int Count = jsonDecode(orders[index]['status']).length;
                   int countItems = jsonDecode(orders[index]['Items']).length;
 
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    height: 75,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
-                    child: Row(children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Order Id : ${orders[index]['OrderID']}",
-                                    style: TextStyle(
-                                      fontFamily: "Inter",
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
-                                      color: Color(0xff1e2a52),
-                                      height: 19 / 16,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Text(
-                                    "Total Items : $countItems",
-                                    style: TextStyle(
-                                      fontFamily: "Inter",
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey,
-                                      height: 19 / 16,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                Count == 1
-                                    ? "Pickup Date : ${orders[index]['PickupDate']}"
-                                    : "Delivery Date : ${orders[index]['DeliveryDate']}",
-                                style: TextStyle(
-                                  fontFamily: "Inter",
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey,
-                                  height: 19 / 16,
-                                ),
-                                textAlign: TextAlign.left,
-                              ),
-                              Text(
-                                Count == 1
-                                    ? "Pickup Time : ${orders[index]['PickupTime']}"
-                                    : "Delivery Time : ${orders[index]['DeliveryTime']}",
-                                style: TextStyle(
-                                  fontFamily: "Inter",
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey,
-                                  height: 19 / 16,
-                                ),
-                                textAlign: TextAlign.left,
-                              )
-                            ],
-                          ),
+                  return GestureDetector(
+                    onTap: () {
+                      _showOrderDetails(context, orders[index]);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      height: 75,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
+                      child: Row(children: [
+                        SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 22,
-                                width: 72,
-                                decoration: BoxDecoration(
-                                    color: Count == 1
-                                        ? Color(0xff29b2fe)
-                                        : Colors.red,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
-                                child: Center(
-                                    child: Text(
-                                  Count == 1 ? 'Pick Up' : "Delivery",
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Order Id : ${orders[index]['OrderID']}",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xff1e2a52),
+                                        height: 19 / 16,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    Text(
+                                      "Total Items : $countItems",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.grey,
+                                        height: 19 / 16,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  Count == 1
+                                      ? "Pickup Date : ${orders[index]['PickupDate']}"
+                                      : "Delivery Date : ${orders[index]['DeliveryDate']}",
                                   style: TextStyle(
                                     fontFamily: "Inter",
                                     fontSize: 10,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    height: 12 / 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey,
+                                    height: 19 / 16,
                                   ),
                                   textAlign: TextAlign.left,
-                                )),
-                              ),
+                                ),
+                                Text(
+                                  Count == 1
+                                      ? "Pickup Time : ${orders[index]['PickupTime']}"
+                                      : "Delivery Time : ${orders[index]['DeliveryTime']}",
+                                  style: TextStyle(
+                                    fontFamily: "Inter",
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey,
+                                    height: 19 / 16,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                )
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                      const Icon(Icons.arrow_drop_down_sharp)
-                    ]),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 22,
+                                  width: 72,
+                                  decoration: BoxDecoration(
+                                      color: Count == 1
+                                          ? Color(0xff29b2fe)
+                                          : Colors.red,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5))),
+                                  child: Center(
+                                      child: Text(
+                                    Count == 1 ? 'Pick Up' : "Delivery",
+                                    style: TextStyle(
+                                      fontFamily: "Inter",
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      height: 12 / 10,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  )),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Icon(Icons.arrow_drop_down_sharp)
+                      ]),
+                    ),
                   );
                 },
               ),
