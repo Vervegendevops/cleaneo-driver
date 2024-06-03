@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
         } else {
           print('hello');
           Map<String, dynamic> responseData = json.decode(responseBody);
+          loginData = responseData;
           String status = responseData['status'];
           print(status);
           OTP = (1000 + Random().nextInt(9000)).toString();

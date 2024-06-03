@@ -50,7 +50,8 @@ class _PickUpState extends State<PickUp> {
                   top: 45, left: 16, right: 16, bottom: 20),
               child: Row(
                 children: [
-                  GestureDetector( // Wrap the Icon with GestureDetector to handle taps
+                  GestureDetector(
+                    // Wrap the Icon with GestureDetector to handle taps
                     onTap: () {
                       _scaffoldKey.currentState!.openDrawer();
                     },

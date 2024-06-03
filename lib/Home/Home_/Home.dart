@@ -615,37 +615,383 @@ class _NewOrdersState extends State<NewOrders> {
   }
 
   void _showOrderDetails(BuildContext context, Map order) {
+    List items = jsonDecode(order['Items']);
+
+    Map<String, List<String>> groupedItems = {};
+    for (var item in items) {
+      if (!groupedItems.containsKey(item['type'])) {
+        groupedItems[item['type']] = [];
+      }
+      groupedItems[item['type']]!.add(item['name']);
+    }
     showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Order ID: ${order['OrderID']}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              SizedBox(height: 8),
-              Text("Status: ${order['status']}"),
-              SizedBox(height: 8),
-              Text("Items: ${order['Items']}"),
-              SizedBox(height: 8),
-              Text("Pickup Date: ${order['PickupDate']}"),
-              SizedBox(height: 8),
-              Text("Pickup Time: ${order['PickupTime']}"),
-              SizedBox(height: 8),
-              Text("Delivery Date: ${order['DeliveryDate']}"),
-              SizedBox(height: 8),
-              Text("Delivery Time: ${order['DeliveryTime']}"),
-              // Add more details as needed
-            ],
-          ),
-        );
-      },
-    );
+        backgroundColor: Colors.white,
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Container(
+                height: 420,
+                color: Colors.white,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                  child: Row(children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Order Id : ${order['OrderID']}",
+                              style: TextStyle(
+                                fontFamily: "Inter",
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff1e2a52),
+                                height: 19 / 16,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+
+                            const SizedBox(
+                              width: double.infinity,
+                              child: Divider(
+                                color: Colors.grey,
+                                thickness: 1,
+                              ),
+                            ),
+                            ...groupedItems.entries.map((entry) {
+                              return Text(
+                                "${entry.key}: ${entry.value.join(', ')}",
+                                style: TextStyle(
+                                  fontFamily: "Inter",
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff1e2a52),
+                                  height: 15 / 12,
+                                ),
+                              );
+                            }).toList(),
+                            // Text(
+                            //   "",
+                            //   style: TextStyle(
+                            //     fontFamily: "Inter",
+                            //     fontSize: 10,
+                            //     fontWeight: FontWeight.w400,
+                            //     color: Color(0xff1e2a52),
+                            //     height: 15 / 12,
+                            //   ),
+                            //   textAlign: TextAlign.left,
+                            // ),
+                            // ignore: prefer_const_constructors
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        color:
+                                            Color.fromARGB(255, 212, 212, 212),
+                                        spreadRadius: 1,
+                                        blurRadius: 10)
+                                  ]),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.25,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${order['PickupDate']}',
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff1e2a52),
+                                            height: 19 / 16,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                        Text(
+                                          "Pickup Date",
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff1e2a52),
+                                            height: 17 / 14,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 1,
+                                    height: 30,
+                                    color: const Color.fromARGB(
+                                        255, 207, 207, 207),
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.25,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "${order['PickupTime']}",
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff1e2a52),
+                                            height: 19 / 16,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                        Text(
+                                          "Pickup Time",
+                                          style: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff1e2a52),
+                                            height: 17 / 14,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Shop/Pickup Location",
+                                    style: TextStyle(
+                                      fontFamily: "Inter",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xff1e2a52),
+                                      height: 19 / 16,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  Text(
+                                    "Floor : ${order['Floor']}\n${order['Caddress']}\nHow to Reach : ${order['HTReach']}",
+                                    style: TextStyle(
+                                      fontFamily: "Inter",
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff1e2a52),
+                                      height: 12 / 10,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Drop Location",
+                                    style: TextStyle(
+                                      fontFamily: "Inter",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xff1e2a52),
+                                      height: 19 / 16,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  Text(
+                                    "${order['VendorAddress']}",
+                                    style: TextStyle(
+                                      fontFamily: "Inter",
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff1e2a52),
+                                      height: 12 / 10,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  // Text(
+                                  //   "Weight",
+                                  //   style: TextStyle(
+                                  //     fontFamily: "Inter",
+                                  //     fontSize: 16,
+                                  //     fontWeight: FontWeight.w500,
+                                  //     color: Color(0xff1e2a52),
+                                  //     height: 19 / 16,
+                                  //   ),
+                                  //   textAlign: TextAlign.left,
+                                  // ),
+                                  // Text(
+                                  //   "dfb",
+                                  //   style: TextStyle(
+                                  //     fontFamily: "Inter",
+                                  //     fontSize: 10,
+                                  //     fontWeight: FontWeight.w400,
+                                  //     color: Color(0xff1e2a52),
+                                  //     height: 12 / 10,
+                                  //   ),
+                                  //   textAlign: TextAlign.left,
+                                  // )
+                                ]),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              height: 50,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 50,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.8,
+                                                child: TextButton(
+                                                  onPressed: () async {
+                                                    print(
+                                                        'OrderID: ${order['OrderID']}');
+                                                    String apiUrl =
+                                                        'https://drycleaneo.com/CleaneoDriver/api/acceptOrder';
+                                                    Map<String, String>
+                                                        requestBody = {
+                                                      'OrderID':
+                                                          order['OrderID'],
+                                                      'DeliveryAgentID':
+                                                          UserData.read('ID'),
+                                                      'DeliveryAgentName':
+                                                          UserData.read('name'),
+                                                      'DeliveryAgentPhone':
+                                                          UserData.read(
+                                                              'phone'),
+                                                    };
+                                                    String jsonBody =
+                                                        jsonEncode(requestBody);
+                                                    http.Response response =
+                                                        await http.post(
+                                                      Uri.parse(apiUrl),
+                                                      headers: {
+                                                        'Content-Type':
+                                                            'application/json'
+                                                      },
+                                                      body: jsonBody,
+                                                    );
+                                                    if (response.statusCode ==
+                                                        200) {
+                                                      print(
+                                                          'Order Accepted Successfully');
+                                                      Navigator.push(context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) {
+                                                        return PickUp();
+                                                      }));
+                                                      // You can handle the response here if needed
+                                                    } else {
+                                                      // Handle error if the request was not successful
+                                                      print(
+                                                          'Failed to sign up. Status code: ${response.statusCode}');
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height: 40,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            1,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        border: Border.all(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    128,
+                                                                    0))),
+                                                    child: const Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          "Accept",
+                                                          style: TextStyle(
+                                                              fontSize: 10,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      0,
+                                                                      128,
+                                                                      0)),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
+                )),
+          );
+        });
   }
 
   @override

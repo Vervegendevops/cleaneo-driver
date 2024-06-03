@@ -1,3 +1,4 @@
+import 'package:cleaneo_driver_app/Home/BotNav.dart';
 import 'package:cleaneo_driver_app/Home/Home_/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -126,7 +127,7 @@ class _mapPageState extends State<mapPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()),
+                              builder: (context) => const BotNav()),
                         );
                       },
                       child: const Row(

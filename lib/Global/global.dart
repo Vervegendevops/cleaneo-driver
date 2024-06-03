@@ -36,3 +36,4 @@ XFile? vehicleDocuments2;
 XFile? vehicleDocuments3;
 XFile? vehicleDocuments4;
 List<dynamic> OrderRequest = [];
+Map<String, dynamic> loginData = {};

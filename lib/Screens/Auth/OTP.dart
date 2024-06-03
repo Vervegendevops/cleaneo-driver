@@ -268,6 +268,10 @@ class _OTPPageState extends State<OTPPage> {
                             if (OTP == otp) {
                               print("same");
                               print(auth);
+                              print(loginData['ID']);
+                              UserData.write('ID', loginData['ID']);
+                              UserData.write('name', loginData['name']);
+                              UserData.write('phone', loginData['phone']);
                               auth == 'login'
                                   ? Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
