@@ -812,6 +812,7 @@ class _NewOrdersState extends State<NewOrders> {
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
+
                                   SizedBox(
                                     height: 20,
                                   ),
@@ -863,6 +864,7 @@ class _NewOrdersState extends State<NewOrders> {
                                   //   textAlign: TextAlign.left,
                                   // )
                                 ]),
+
                             SizedBox(
                               height: 20,
                             ),

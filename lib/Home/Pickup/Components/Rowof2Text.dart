@@ -745,7 +745,7 @@ class _NewOrdersssState extends State<NewOrdersss> {
     return orders.length == 0
         ? Container()
         : Container(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.66,
             child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: orders.isEmpty

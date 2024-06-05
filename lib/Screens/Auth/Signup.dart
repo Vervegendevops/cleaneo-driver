@@ -3,6 +3,7 @@ import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Screens/Auth/Login.dart';
 import 'package:cleaneo_driver_app/Screens/Auth/OTP.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -442,367 +443,370 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Checkbox(
-                                checkColor: Color(0xffffffff),
-                                activeColor: Color(0xff29b2fe),
-                                value: tns,
-                                onChanged: (value) {
-                                  setState(() {
-                                    tns = !tns;
-                                  });
-                                },
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "By Continuing, you agree to our  ",
-                                        style: TextStyle(
-                                          fontSize: mQuery.size.width * 0.025,
-                                          color: tns == false
-                                              ? Colors.grey
-                                              : Colors.black,
-                                          fontFamily: 'SatoshiRegular',
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Checkbox(
+                                  checkColor: Color(0xffffffff),
+                                  activeColor: Color(0xff29b2fe),
+                                  value: tns,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      tns = !tns;
+                                    });
+                                  },
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "By Continuing, you agree to our  ",
+                                          style: TextStyle(
+                                            fontSize: mQuery.size.width * 0.025,
+                                            color: tns == false
+                                                ? Colors.grey
+                                                : Colors.black,
+                                            fontFamily: 'SatoshiRegular',
+                                          ),
                                         ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          // Navigator.push(context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) {
-                                          // return TS();
-                                          // }));
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) {
-                                              return Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.5,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            topLeft: Radius
-                                                                .circular(20),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    20))),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      20.0),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        "Terms of Service",
-                                                        style: TextStyle(
-                                                          fontSize: mQuery
-                                                                  .size.height *
-                                                              0.027,
-                                                          color: Colors.black,
-                                                          fontFamily:
-                                                              'SatoshiBold',
+                                        GestureDetector(
+                                          onTap: () {
+                                            // Navigator.push(context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) {
+                                            // return TS();
+                                            // }));
+                                            showModalBottomSheet(
+                                              context: context,
+                                              builder: (context) {
+                                                return Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.5,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              topLeft: Radius
+                                                                  .circular(20),
+                                                              topRight:
+                                                                  Radius.circular(
+                                                                      20))),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(
+                                                        20.0),
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          "Terms of Service",
+                                                          style: TextStyle(
+                                                            fontSize: mQuery
+                                                                    .size.height *
+                                                                0.027,
+                                                            color: Colors.black,
+                                                            fontFamily:
+                                                                'SatoshiBold',
+                                                          ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      ),
-                                                      SizedBox(
-                                                          height: mQuery
-                                                                  .size.height *
-                                                              0.01),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      ),
-                                                      SizedBox(
-                                                          height: mQuery
-                                                                  .size.height *
-                                                              0.01),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      )
-                                                    ],
+                                                        SizedBox(
+                                                          height: 20,
+                                                        ),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        ),
+                                                        SizedBox(
+                                                            height: mQuery
+                                                                    .size.height *
+                                                                0.01),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        ),
+                                                        SizedBox(
+                                                            height: mQuery
+                                                                    .size.height *
+                                                                0.01),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
+                                                );
+                                              },
+                                            );
+                                          },
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Terms of Service ",
+                                                style: TextStyle(
+                                                  fontSize:
+                                                      mQuery.size.width * 0.025,
+                                                  color: tns == false
+                                                      ? Colors.grey
+                                                      : Colors.black,
+                                                  fontFamily: 'SatoshiMedium',
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  decorationColor: tns == false
+                                                      ? Colors.grey
+                                                      : Colors.black,
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Terms of Service ",
-                                              style: TextStyle(
-                                                fontSize:
-                                                    mQuery.size.width * 0.025,
-                                                color: tns == false
-                                                    ? Colors.grey
-                                                    : Colors.black,
-                                                fontFamily: 'SatoshiMedium',
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                decorationColor: tns == false
-                                                    ? Colors.grey
-                                                    : Colors.black,
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        ' , ',
+                                        Text(
+                                          ' , ',
+                                          style: TextStyle(
+                                            fontSize: mQuery.size.width * 0.025,
+                                            color: tns == false
+                                                ? Colors.grey
+                                                : Colors.black,
+                                            fontFamily: 'SatoshiMedium',
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            // Navigator.push(context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) {
+                                            // return PP();
+                                            // }));
+                                            showModalBottomSheet(
+                                              context: context,
+                                              builder: (context) {
+                                                return Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.5,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              topLeft: Radius
+                                                                  .circular(20),
+                                                              topRight:
+                                                                  Radius.circular(
+                                                                      20))),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(
+                                                        20.0),
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          "Privacy Policy",
+                                                          style: TextStyle(
+                                                            fontSize: mQuery
+                                                                    .size.height *
+                                                                0.027,
+                                                            color: Colors.black,
+                                                            fontFamily:
+                                                                'SatoshiBold',
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 20,
+                                                        ),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        ),
+                                                        SizedBox(
+                                                            height: mQuery
+                                                                    .size.height *
+                                                                0.01),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        ),
+                                                        SizedBox(
+                                                            height: mQuery
+                                                                    .size.height *
+                                                                0.01),
+                                                        Text(
+                                                          "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                          style: TextStyle(
+                                                              fontSize: mQuery
+                                                                      .size
+                                                                      .height *
+                                                                  0.0165,
+                                                              fontFamily:
+                                                                  'SatoshiMedium'),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Privacy Policy",
+                                                style: TextStyle(
+                                                  fontSize:
+                                                      mQuery.size.width * 0.025,
+                                                  color: tns == false
+                                                      ? Colors.grey
+                                                      : Colors.black,
+                                                  fontFamily: 'SatoshiMedium',
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  decorationColor: tns == false
+                                                      ? Colors.grey
+                                                      : Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // Navigator.push(context,
+                                        //     MaterialPageRoute(builder: (context) {
+                                        // return CP();
+                                        // }));
+                                        showModalBottomSheet(
+                                          context: context,
+                                          builder: (context) {
+                                            return Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.5,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(20),
+                                                      topRight:
+                                                          Radius.circular(20))),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(20.0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "Content Policies",
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.027,
+                                                        color: Colors.black,
+                                                        fontFamily: 'SatoshiBold',
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Text(
+                                                      "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              mQuery.size.height *
+                                                                  0.0165,
+                                                          fontFamily:
+                                                              'SatoshiMedium'),
+                                                    ),
+                                                    SizedBox(
+                                                        height:
+                                                            mQuery.size.height *
+                                                                0.01),
+                                                    Text(
+                                                      "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              mQuery.size.height *
+                                                                  0.0165,
+                                                          fontFamily:
+                                                              'SatoshiMedium'),
+                                                    ),
+                                                    SizedBox(
+                                                        height:
+                                                            mQuery.size.height *
+                                                                0.01),
+                                                    Text(
+                                                      "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              mQuery.size.height *
+                                                                  0.0165,
+                                                          fontFamily:
+                                                              'SatoshiMedium'),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Text(
+                                        "Content Policies",
                                         style: TextStyle(
                                           fontSize: mQuery.size.width * 0.025,
                                           color: tns == false
                                               ? Colors.grey
                                               : Colors.black,
                                           fontFamily: 'SatoshiMedium',
+                                          decoration: TextDecoration.underline,
+                                          decorationColor: tns == false
+                                              ? Colors.grey
+                                              : Colors.black,
                                         ),
                                       ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          // Navigator.push(context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) {
-                                          // return PP();
-                                          // }));
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) {
-                                              return Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.5,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            topLeft: Radius
-                                                                .circular(20),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    20))),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      20.0),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        "Privacy Policy",
-                                                        style: TextStyle(
-                                                          fontSize: mQuery
-                                                                  .size.height *
-                                                              0.027,
-                                                          color: Colors.black,
-                                                          fontFamily:
-                                                              'SatoshiBold',
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      ),
-                                                      SizedBox(
-                                                          height: mQuery
-                                                                  .size.height *
-                                                              0.01),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      ),
-                                                      SizedBox(
-                                                          height: mQuery
-                                                                  .size.height *
-                                                              0.01),
-                                                      Text(
-                                                        "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                        style: TextStyle(
-                                                            fontSize: mQuery
-                                                                    .size
-                                                                    .height *
-                                                                0.0165,
-                                                            fontFamily:
-                                                                'SatoshiMedium'),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Privacy Policy",
-                                              style: TextStyle(
-                                                fontSize:
-                                                    mQuery.size.width * 0.025,
-                                                color: tns == false
-                                                    ? Colors.grey
-                                                    : Colors.black,
-                                                fontFamily: 'SatoshiMedium',
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                decorationColor: tns == false
-                                                    ? Colors.grey
-                                                    : Colors.black,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Navigator.push(context,
-                                      //     MaterialPageRoute(builder: (context) {
-                                      // return CP();
-                                      // }));
-                                      showModalBottomSheet(
-                                        context: context,
-                                        builder: (context) {
-                                          return Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.5,
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(20),
-                                                    topRight:
-                                                        Radius.circular(20))),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(20.0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "Content Policies",
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          mQuery.size.height *
-                                                              0.027,
-                                                      color: Colors.black,
-                                                      fontFamily: 'SatoshiBold',
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 20,
-                                                  ),
-                                                  Text(
-                                                    "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                    style: TextStyle(
-                                                        fontSize:
-                                                            mQuery.size.height *
-                                                                0.0165,
-                                                        fontFamily:
-                                                            'SatoshiMedium'),
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          mQuery.size.height *
-                                                              0.01),
-                                                  Text(
-                                                    "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                    style: TextStyle(
-                                                        fontSize:
-                                                            mQuery.size.height *
-                                                                0.0165,
-                                                        fontFamily:
-                                                            'SatoshiMedium'),
-                                                  ),
-                                                  SizedBox(
-                                                      height:
-                                                          mQuery.size.height *
-                                                              0.01),
-                                                  Text(
-                                                    "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
-                                                    style: TextStyle(
-                                                        fontSize:
-                                                            mQuery.size.height *
-                                                                0.0165,
-                                                        fontFamily:
-                                                            'SatoshiMedium'),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                    child: Text(
-                                      "Content Policies",
-                                      style: TextStyle(
-                                        fontSize: mQuery.size.width * 0.025,
-                                        color: tns == false
-                                            ? Colors.grey
-                                            : Colors.black,
-                                        fontFamily: 'SatoshiMedium',
-                                        decoration: TextDecoration.underline,
-                                        decorationColor: tns == false
-                                            ? Colors.grey
-                                            : Colors.black,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
 
                           SizedBox(

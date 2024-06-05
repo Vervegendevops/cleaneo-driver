@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 import 'package:cleaneo_driver_app/Global/global.dart';
+import 'package:cleaneo_driver_app/Home/BotNav.dart';
+import 'package:cleaneo_driver_app/Home/StartTrip/components/pickupOrderSummary.dart';
 import 'package:cleaneo_driver_app/Map/enableLocation.dart';
 import 'package:cleaneo_driver_app/Map/map.dart';
 import 'package:cleaneo_driver_app/Screens/Driver_Onboarding/DL.dart';
@@ -14,14 +16,16 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class OTPPage extends StatefulWidget {
-  const OTPPage({Key? key}) : super(key: key);
+import '../../PickupMap/map.dart';
+
+class ReceiveOTPage extends StatefulWidget {
+  const ReceiveOTPage({Key? key}) : super(key: key);
 
   @override
-  State<OTPPage> createState() => _OTPPageState();
+  State<ReceiveOTPage> createState() => _ReceiveOTPageState();
 }
 
-class _OTPPageState extends State<OTPPage> {
+class _ReceiveOTPageState extends State<ReceiveOTPage> {
   late List<TextEditingController> controllers;
   late List<FocusNode> focusNodes;
   int focusedIndex = -1;
@@ -153,7 +157,7 @@ class _OTPPageState extends State<OTPPage> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    "Verify Phone Number",
+                    "Verify Received OTP",
                     style: TextStyle(
                         fontSize: mQuery.size.height * 0.027,
                         color: Colors.white,
@@ -174,7 +178,7 @@ class _OTPPageState extends State<OTPPage> {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding:
-                        const EdgeInsets.only(left: 16, right: 16, top: 16),
+                    const EdgeInsets.only(left: 16, right: 16, top: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -186,9 +190,11 @@ class _OTPPageState extends State<OTPPage> {
                               fontFamily: 'SatoshiBold'),
                         ),
                         SizedBox(height: mQuery.size.height * 0.006),
+
+                        ///////////
                         Text(
-                          "Sent to " +
-                              (auth == 'login' ? Loginphone : Signupphone),
+                          "Sent to ${userVendor['UserPhone']}",
+                              // (auth == 'login' ? Loginphone : Signupphone),
                           style: TextStyle(
                               fontSize: mQuery.size.height * 0.018,
                               fontFamily: 'SatoshiRegular',
@@ -274,15 +280,16 @@ class _OTPPageState extends State<OTPPage> {
                               UserData.write('phone', loginData['phone']);
                               auth == 'login'
                                   ? Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                      return LoginStatus == 'P'
-                                          ? Verifying()
-                                          : MapPage();
-                                    }))
+                                  MaterialPageRoute(builder: (context) {
+                                    return LoginStatus == 'P'
+                                        ? Verifying()
+                                        : PickUpOrderSummary();  // here the Summary Page
+                                    // will be open
+                                  }))
                                   : Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                      return DL();
-                                    }));
+                                  MaterialPageRoute(builder: (context) {
+                                    return DL();
+                                  }));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -356,8 +363,8 @@ class OTPBox extends StatelessWidget {
 
   OTPBox(
       {required this.controller,
-      required this.focusNode,
-      required this.isFocused});
+        required this.focusNode,
+        required this.isFocused});
 
   @override
   Widget build(BuildContext context) {
