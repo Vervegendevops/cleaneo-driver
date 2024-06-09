@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cleaneo_driver_app/Home/Pickup/Components/newPickedUpOrders.dart';
 import 'package:cleaneo_driver_app/Home/Pickup/Pickup.dart';
 import 'package:cleaneo_driver_app/Home/PickupMap/map.dart';
 import 'package:http/http.dart' as http;
@@ -122,248 +123,7 @@ class _PickupTwoTextState extends State<PickupTwoText> {
         ),
         // Content based on tab selection
         if (_selectedIndex == 0) NewOrdersss(),
-        if (_selectedIndex == 1)
-          Expanded(
-            flex: 3,
-            child: ListView.builder(
-              itemCount: _todaytabData[_selectedIndex][0]["orders"]!.length,
-              itemBuilder: (BuildContext context, int index) {
-                var order = _todaytabData[_selectedIndex][0]["orders"]![index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '${order['dateandtime']}',
-                            style: TextStyle(
-                                color: const Color.fromARGB(255, 181, 181, 181),
-                                fontSize: mQuery.size.height * 0.016,
-                                fontFamily: 'SatoshiBold'),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return PickedupDetailsPage();
-                          }));
-                        },
-                        child: Container(
-                            height: mQuery.size.height * 0.3,
-                            margin: const EdgeInsets.only(bottom: 21.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 0,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                    0,
-                                    0,
-                                  ), // changes the position of the shadow
-                                ),
-                              ],
-                            ),
-                            child: ListView(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  color: const Color(0xFFF3FBFF),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            const Icon(
-                                              Icons.shopping_bag_outlined,
-                                              color: const Color(0xFF48BDFE),
-                                            ),
-                                            const SizedBox(
-                                              width: 6.0,
-                                            ),
-                                            Text(
-                                              'Order ${order['orderNumber']}',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: mQuery.size.height *
-                                                      0.017,
-                                                  fontFamily: 'SatoshiBold'),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: mQuery.size.height * 0.02,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Location',
-                                            style: TextStyle(
-                                                color: const Color.fromARGB(
-                                                    255, 152, 152, 152),
-                                                fontSize:
-                                                    mQuery.size.height * 0.018,
-                                                fontFamily: 'SatoshiBold'),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.home,
-                                            color: Colors.blue,
-                                            size: 16,
-                                          ),
-                                          const SizedBox(
-                                            width: 6.0,
-                                          ),
-                                          Text(
-                                            '${order['location']}',
-                                            style: TextStyle(
-                                                color: Colors.black87,
-                                                fontSize:
-                                                    mQuery.size.height * 0.014,
-                                                fontFamily: 'SatoshiMedium'),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      const Divider(
-                                        color:
-                                            Color.fromARGB(255, 212, 212, 212),
-                                        thickness: 0.7,
-                                      ),
-                                      const SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Customer Detail',
-                                            style: TextStyle(
-                                                color: const Color.fromARGB(
-                                                    255, 152, 152, 152),
-                                                fontSize:
-                                                    mQuery.size.height * 0.016,
-                                                fontFamily: 'SatoshiBold'),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 10.0,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const ProfilePicture(
-                                            name: "",
-                                            radius: 18,
-                                            fontsize: 10,
-                                            img:
-                                                "https://a.storyblok.com/f/191576/1200x800/faa88c639f/round_profil_picture_before_.webp",
-                                          ),
-                                          const SizedBox(
-                                            width: 10.0,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${order['name']}',
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize:
-                                                        mQuery.size.height *
-                                                            0.016,
-                                                    fontFamily:
-                                                        'SatoshiMedium'),
-                                              ),
-                                              Text(
-                                                '${order['number']}',
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize:
-                                                        mQuery.size.height *
-                                                            0.015,
-                                                    fontFamily:
-                                                        'SatoshiMedium'),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return RatingPage();
-                                    }));
-                                  },
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(6.0),
-                                          bottomRight: Radius.circular(6.0)),
-                                      color: Color(0xFF29B2FE),
-                                    ),
-                                    height: mQuery.size.height * 0.035,
-                                    width: double.infinity,
-                                    child: Center(
-                                      child: Text(
-                                        'SUBMIT REVIEW',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                mQuery.size.height * 0.015,
-                                            fontFamily: 'SatoshiBold'),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            )),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
+        if (_selectedIndex == 1) NewPickedUpOrders()
       ],
     );
   }
@@ -757,129 +517,138 @@ class _NewOrdersssState extends State<NewOrdersss> {
                         int countItems =
                             jsonDecode(orders[index]['Items']).length;
 
-                        return GestureDetector(
-                          onTap: () {
-                            // _showOrderDetails(context, orders[index]);
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return PickupMap(order: orders[index]);
-                            }));
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(bottom: 10),
-                            height: 75,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(10))),
-                            child: Row(children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                        return Count == 1
+                            ? GestureDetector(
+                                onTap: () {
+                                  // _showOrderDetails(context, orders[index]);
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return PickupMap(order: orders[index]);
+                                  }));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: Row(children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Order Id : ${orders[index]['OrderID']}",
+                                                  style: TextStyle(
+                                                    fontFamily: "Inter",
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: Color(0xff1e2a52),
+                                                    height: 19 / 16,
+                                                  ),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                                Text(
+                                                  "Total Items : $countItems",
+                                                  style: TextStyle(
+                                                    fontFamily: "Inter",
+                                                    fontSize: 10,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.grey,
+                                                    height: 19 / 16,
+                                                  ),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              Count == 1
+                                                  ? "Pickup Date : ${orders[index]['PickupDate']}"
+                                                  : "Delivery Date : ${orders[index]['DeliveryDate']}",
+                                              style: TextStyle(
+                                                fontFamily: "Inter",
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.grey,
+                                                height: 19 / 16,
+                                              ),
+                                              textAlign: TextAlign.left,
+                                            ),
+                                            Text(
+                                              Count == 1
+                                                  ? "Pickup Time : ${orders[index]['PickupTime']}"
+                                                  : "Delivery Time : ${orders[index]['DeliveryTime']}",
+                                              style: TextStyle(
+                                                fontFamily: "Inter",
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.grey,
+                                                height: 19 / 16,
+                                              ),
+                                              textAlign: TextAlign.left,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.35,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
                                         children: [
-                                          Text(
-                                            "Order Id : ${orders[index]['OrderID']}",
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w700,
-                                              color: Color(0xff1e2a52),
-                                              height: 19 / 16,
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                              height: 22,
+                                              width: 72,
+                                              decoration: BoxDecoration(
+                                                  color: Count == 1
+                                                      ? Color(0xff29b2fe)
+                                                      : Colors.red,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(5))),
+                                              child: Center(
+                                                  child: Text(
+                                                Count == 1
+                                                    ? 'Pick Up'
+                                                    : "Delivery",
+                                                style: TextStyle(
+                                                  fontFamily: "Inter",
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                  height: 12 / 10,
+                                                ),
+                                                textAlign: TextAlign.left,
+                                              )),
                                             ),
-                                            textAlign: TextAlign.left,
-                                          ),
-                                          Text(
-                                            "Total Items : $countItems",
-                                            style: TextStyle(
-                                              fontFamily: "Inter",
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.grey,
-                                              height: 19 / 16,
-                                            ),
-                                            textAlign: TextAlign.left,
                                           ),
                                         ],
                                       ),
-                                      Text(
-                                        Count == 1
-                                            ? "Pickup Date : ${orders[index]['PickupDate']}"
-                                            : "Delivery Date : ${orders[index]['DeliveryDate']}",
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.grey,
-                                          height: 19 / 16,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                      Text(
-                                        Count == 1
-                                            ? "Pickup Time : ${orders[index]['PickupTime']}"
-                                            : "Delivery Time : ${orders[index]['DeliveryTime']}",
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.grey,
-                                          height: 19 / 16,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.35,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        height: 22,
-                                        width: 72,
-                                        decoration: BoxDecoration(
-                                            color: Count == 1
-                                                ? Color(0xff29b2fe)
-                                                : Colors.red,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5))),
-                                        child: Center(
-                                            child: Text(
-                                          Count == 1 ? 'Pick Up' : "Delivery",
-                                          style: TextStyle(
-                                            fontFamily: "Inter",
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                            height: 12 / 10,
-                                          ),
-                                          textAlign: TextAlign.left,
-                                        )),
-                                      ),
                                     ),
-                                  ],
+                                    // const Icon(Icons.arrow_drop_down_sharp)
+                                  ]),
                                 ),
-                              ),
-                              // const Icon(Icons.arrow_drop_down_sharp)
-                            ]),
-                          ),
-                        );
+                              )
+                            : null;
                       },
                     ),
             ),

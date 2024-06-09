@@ -3,23 +3,11 @@ import 'package:cleaneo_driver_app/Screens/Splash.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'Home/BotNav.dart';
 
 void main() {
   runApp(const MyApp());
 }
-// void main()
-// {
-//   runApp(
-//     DevicePreview(
-//       builder: (context)
-//       {
-//         return MyApp();
-//       },
-//     )
-//   );
-// }
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
