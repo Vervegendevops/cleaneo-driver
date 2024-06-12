@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Home/BotNav.dart';
+import 'package:cleaneo_driver_app/Home/PickedUpMap/accepted.dart';
+import 'package:cleaneo_driver_app/Home/PickedUpMap/delivered.dart';
 import 'package:cleaneo_driver_app/Home/StartTrip/components/pickupOrderSummary.dart';
 import 'package:cleaneo_driver_app/Map/enableLocation.dart';
 import 'package:cleaneo_driver_app/Map/map.dart';
@@ -19,7 +21,8 @@ import 'package:pinput/pinput.dart';
 import '../../PickupMap/map.dart';
 
 class ReceiveOTPage extends StatefulWidget {
-  const ReceiveOTPage({Key? key}) : super(key: key);
+  String orderID;
+  ReceiveOTPage({Key? key, required this.orderID}) : super(key: key);
 
   @override
   State<ReceiveOTPage> createState() => _ReceiveOTPageState();
@@ -95,16 +98,38 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
     }
   }
 
-  @override
-  void dispose() {
-    for (var node in focusNodes) {
-      node.dispose();
+  Future<void> _triggerApiCall() async {
+    final String apiUrl =
+        'https://drycleaneo.com/CleaneoVendor/api/updateOrderStatus/${widget.orderID}';
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+      );
+
+      if (response.statusCode == 200) {
+        // Successful API call
+
+        print('API call successful');
+        print('hello');
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return OrderAcceptedPage(); // here the Summary Page
+          // will be open
+        }));
+      } else {
+        // API call failed
+        print('Failed with status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Exception occurred
+      print('Exception: $e');
     }
-    super.dispose();
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    print(userVendor);
     var mQuery = MediaQuery.of(context);
     final defaultPinTheme = PinTheme(
         width: mQuery.size.width * 0.23,
@@ -143,6 +168,7 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
+                      // Navigator.pop(context);
                       // Navigator.push(context,
                       //     MaterialPageRoute(builder: (context) {
                       //   return auth == 'Login' ? LoginPage() : SignUpPage();
@@ -157,7 +183,7 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
                     width: mQuery.size.width * 0.045,
                   ),
                   Text(
-                    "Verify Received OTP",
+                    "Verify Receiver OTP",
                     style: TextStyle(
                         fontSize: mQuery.size.height * 0.027,
                         color: Colors.white,
@@ -178,7 +204,7 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding:
-                    const EdgeInsets.only(left: 16, right: 16, top: 16),
+                        const EdgeInsets.only(left: 16, right: 16, top: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -194,7 +220,7 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
                         ///////////
                         Text(
                           "Sent to ${userVendor['UserPhone']}",
-                              // (auth == 'login' ? Loginphone : Signupphone),
+                          // (auth == 'login' ? Loginphone : Signupphone),
                           style: TextStyle(
                               fontSize: mQuery.size.height * 0.018,
                               fontFamily: 'SatoshiRegular',
@@ -272,24 +298,7 @@ class _ReceiveOTPageState extends State<ReceiveOTPage> {
                               ispressed = true;
                             });
                             if (OTP == otp) {
-                              print("same");
-                              print(auth);
-                              print(loginData['ID']);
-                              UserData.write('ID', loginData['ID']);
-                              UserData.write('name', loginData['name']);
-                              UserData.write('phone', loginData['phone']);
-                              auth == 'login'
-                                  ? Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return LoginStatus == 'P'
-                                        ? Verifying()
-                                        : PickUpOrderSummary();  // here the Summary Page
-                                    // will be open
-                                  }))
-                                  : Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return DL();
-                                  }));
+                              _triggerApiCall();
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -363,8 +372,8 @@ class OTPBox extends StatelessWidget {
 
   OTPBox(
       {required this.controller,
-        required this.focusNode,
-        required this.isFocused});
+      required this.focusNode,
+      required this.isFocused});
 
   @override
   Widget build(BuildContext context) {

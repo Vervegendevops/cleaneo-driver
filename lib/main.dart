@@ -1,11 +1,14 @@
+import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Home/StartTrip/Starttrip.dart';
 import 'package:cleaneo_driver_app/Screens/Splash.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'Home/BotNav.dart';
 
-void main() {
+Future<void> main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -29,7 +32,6 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const SplashScreen());
-    //  home: BotNav()
+        home: UserData.read('ID') == null ? SplashScreen() : BotNav());
   }
 }

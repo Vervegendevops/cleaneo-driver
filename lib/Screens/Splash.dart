@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

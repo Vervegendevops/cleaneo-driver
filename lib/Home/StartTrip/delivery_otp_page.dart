@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
 class DeliveryOTPPage extends StatefulWidget {
-  const DeliveryOTPPage({Key? key}) : super(key: key);
+  String orderID;
+  DeliveryOTPPage({Key? key, required this.orderID}) : super(key: key);
 
   @override
   State<DeliveryOTPPage> createState() => _DeliveryOTPPageState();
@@ -97,8 +98,9 @@ class _DeliveryOTPPageState extends State<DeliveryOTPPage> {
                                   fontSize: mQuery.size.height * 0.0215,
                                   fontFamily: 'SatoshiBold'),
                             ),
-
-                            SizedBox(height: mQuery.size.height*0.05,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.05,
+                            ),
                             Pinput(
                               length: 6,
                               defaultPinTheme: defaultPinTheme,
@@ -106,14 +108,13 @@ class _DeliveryOTPPageState extends State<DeliveryOTPPage> {
                           ],
                         ),
                       ),
-
                       SizedBox(height: mQuery.size.height * 0.455),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                                return HomePage();
-                              }));
+                            return HomePage();
+                          }));
                         },
                         child: Container(
                           width: double.infinity,
@@ -144,8 +145,6 @@ class _DeliveryOTPPageState extends State<DeliveryOTPPage> {
       ),
     );
   }
-
-
 }
 
 class OTPBox extends StatelessWidget {
@@ -153,7 +152,11 @@ class OTPBox extends StatelessWidget {
   final FocusNode focusNode;
   final bool isFocused;
 
-  const OTPBox({super.key, required this.controller, required this.focusNode, required this.isFocused});
+  const OTPBox(
+      {super.key,
+      required this.controller,
+      required this.focusNode,
+      required this.isFocused});
 
   @override
   Widget build(BuildContext context) {

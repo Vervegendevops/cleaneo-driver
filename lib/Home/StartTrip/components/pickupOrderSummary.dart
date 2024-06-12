@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
-
 import '../../Pickup/Components/cameraScreen.dart';
 import '../Starttrip.dart';
 
@@ -14,7 +13,6 @@ class PickUpOrderSummary extends StatefulWidget {
 }
 
 class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
-
   void _showConfirmationDialog() async {
     // Open camera
     final cameras = await availableCameras();
@@ -25,19 +23,24 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
         var mQuery = MediaQuery.of(context);
         return AlertDialog(
           backgroundColor: Colors.white,
-          title: Center(child: Text("Congratulations!",
+          title: Center(
+              child: Text(
+            "Congratulations!",
             style: TextStyle(
               color: Color(0xff29b2fe),
               fontFamily: 'SatoshiBold',
-            ),)),
-          content: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: mQuery.size.width*0.033
             ),
-            child: Text("You have successfully picked up "
-                "the order.",style: TextStyle(
-              fontFamily: 'SatoshiMedium',
-            ),),
+          )),
+          content: Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.033),
+            child: Text(
+              "You have successfully picked up "
+              "the order.",
+              style: TextStyle(
+                fontFamily: 'SatoshiMedium',
+              ),
+            ),
           ),
           actions: <Widget>[
             Column(
@@ -48,46 +51,51 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              CameraScreen(camera: firstCamera,)),
+                          builder: (context) => CameraScreen(
+                                camera: firstCamera,
+                              )),
                     );
                   },
                   child: Container(
-                      width : double.infinity,
-                      height: mQuery.size.height*0.056,
+                      width: double.infinity,
+                      height: mQuery.size.height * 0.056,
                       decoration: BoxDecoration(
                           color: Color(0xff29b2fe),
-                          borderRadius: BorderRadius.circular(6)
-                      ),
-                      child: Center(child: Text("Take Pictures",
+                          borderRadius: BorderRadius.circular(6)),
+                      child: Center(
+                          child: Text(
+                        "Take Pictures",
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'SatoshiBold',
-                            fontSize: mQuery.size.height*0.024
-                        ),))),
+                            fontSize: mQuery.size.height * 0.024),
+                      ))),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 GestureDetector(
-                  onTap: ()
-                  {
+                  onTap: () {
                     Navigator.pop(context);
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
                       return StartTripPage();
                     }));
                   },
                   child: Container(
                     width: double.infinity,
-                    height: mQuery.size.height*0.06,
+                    height: mQuery.size.height * 0.06,
                     decoration: BoxDecoration(
                         color: Color(0xff29b2fe),
-                        borderRadius: BorderRadius.circular(8)
-                    ),
+                        borderRadius: BorderRadius.circular(8)),
                     child: Center(
-                      child: Text("Start Next Trip",style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'SatoshiBold',
-                          fontSize: mQuery.size.height*0.024
-                      ),),
+                      child: Text(
+                        "Start Next Trip",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'SatoshiBold',
+                            fontSize: mQuery.size.height * 0.024),
+                      ),
                     ),
                   ),
                 ),
@@ -101,23 +109,21 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
 
   @override
   Widget build(BuildContext context) {
-
-    var _itemValue = ValueNotifier<int>(1);   // for shirt
+    var _itemValue = ValueNotifier<int>(1); // for shirt
     var _itemValue1 = ValueNotifier<int>(1); // for lehenga
 
     var _itemValue2 = ValueNotifier<int>(1);
-    var _itemValue3 = ValueNotifier<int>(1);  // for night suit
-    var _itemValue4 = ValueNotifier<int>(1);  // for waistcoat
+    var _itemValue3 = ValueNotifier<int>(1); // for night suit
+    var _itemValue4 = ValueNotifier<int>(1); // for waistcoat
 
-    var _itemValue5 = ValueNotifier<int>(1);  // for Blouse Designer
-    var _itemValue6 = ValueNotifier<int>(1);  // for shorts
-    var _itemValue7 = ValueNotifier<int>(1);  // for skirt
-    var _itemValue8 = ValueNotifier<int>(1);  // for swimming costume
-    var _itemValue9 = ValueNotifier<int>(1);  // for innerWear
-    var _itemValue10 = ValueNotifier<int>(1);  // for socks
-    var _itemValue11 = ValueNotifier<int>(1);  // for frock
-    var _itemValue12 = ValueNotifier<int>(1);  // for jump suit
-
+    var _itemValue5 = ValueNotifier<int>(1); // for Blouse Designer
+    var _itemValue6 = ValueNotifier<int>(1); // for shorts
+    var _itemValue7 = ValueNotifier<int>(1); // for skirt
+    var _itemValue8 = ValueNotifier<int>(1); // for swimming costume
+    var _itemValue9 = ValueNotifier<int>(1); // for innerWear
+    var _itemValue10 = ValueNotifier<int>(1); // for socks
+    var _itemValue11 = ValueNotifier<int>(1); // for frock
+    var _itemValue12 = ValueNotifier<int>(1); // for jump suit
 
     bool _editTapped = false;
 
@@ -138,8 +144,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
     var bedSheetNo = 01;
     var batheMateNo = 01;
 
-
-
     var shirtPrice = 10.0;
     var blousePrice = 30.0;
     var lehengaPrice = 180.0;
@@ -156,8 +160,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
     var kurtaDesignerPrice = 30.0;
     var bedSheetPrice = 50.0;
     var bathMatePrice = 30.0;
-
-
 
     double totalShirtPrice = _itemValue.value * shirtPrice;
     double totalBlousePrice = blouseNo * blousePrice;
@@ -190,7 +192,9 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: kToolbarHeight,),
+              SizedBox(
+                height: kToolbarHeight,
+              ),
               Padding(
                 padding: EdgeInsets.only(left: mQuery.size.width * 0.045),
                 child: Text(
@@ -206,8 +210,8 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
               Container(
                 width: double.infinity,
                 height: mQuery.size.height * 0.12,
-                padding: EdgeInsets.symmetric(
-                    horizontal: mQuery.size.width * 0.04),
+                padding:
+                    EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
                 color: Color(0xffebf7ed),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -218,7 +222,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                         fontsize: 10,
                         name: "",
                         img:
-                        "https://images.news18.com/ibnkhabar/uploads/2023/09/IFS-Apala-mishra-age-upsc-rank-education-biography-in-hindi-marksheet-salary-1.jpg",
+                            "https://images.news18.com/ibnkhabar/uploads/2023/09/IFS-Apala-mishra-age-upsc-rank-education-biography-in-hindi-marksheet-salary-1.jpg",
                       ),
                       SizedBox(
                         width: mQuery.size.width * 0.025,
@@ -269,7 +273,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                           ),
                           Text(
                             "B-702, Sarthak the Sarjak, Bhaijipura Chokdi, PDPU \n"
-                                "Crossroad , Beside Pulse Mall, Seventhn Floor , Kudasan",
+                            "Crossroad , Beside Pulse Mall, Seventhn Floor , Kudasan",
                             style: TextStyle(fontSize: 10),
                           )
                         ],
@@ -299,8 +303,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                         fontSize: mQuery.size.height * 0.02,
                         color: Colors.grey.shade600,
                         fontFamily: 'SatoshiMedium'),
-                    suffixIcon:
-                    const Icon(Icons.search, color: Colors.grey),
+                    suffixIcon: const Icon(Icons.search, color: Colors.grey),
                   ),
                 ),
               ),
@@ -308,8 +311,8 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                 height: mQuery.size.height * 0.025,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: mQuery.size.width * 0.04),
+                padding:
+                    EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.04),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -323,7 +326,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                     SizedBox(
                       height: mQuery.size.height * 0.025,
                     ),
-
                     Column(
                       children: [
                         Container(
@@ -358,6 +360,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                   ),
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.016),
+
                                 /// update shirt
                                 Row(
                                   children: [
@@ -368,11 +371,9 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         fontFamily: 'SatoshiBold',
                                       ),
                                     ),
-
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -389,55 +390,71 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue.value > 0) {
                                                       _itemValue.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue,
-                                                  builder: (context, value, child) {
-                                                    double totalPrice1 = value * lehengaPrice;
+                                                  builder:
+                                                      (context, value, child) {
+                                                    double totalPrice1 =
+                                                        value * lehengaPrice;
                                                     return Text(
                                                       "$value",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue.value++,
+                                                  onTap: () =>
+                                                      _itemValue.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -446,14 +463,13 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
 
-
                                 Padding(
-                                  padding: EdgeInsets.only(right: mQuery.size.width * 0.02),
+                                  padding: EdgeInsets.only(
+                                      right: mQuery.size.width * 0.02),
                                   child: Row(
                                     children: [
                                       Text(
@@ -468,18 +484,18 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * shirtPrice;
+                                          double totalPrice =
+                                              value * shirtPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -506,74 +522,89 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       },
                                       child: Stack(
                                         children: [
-                                          if(!_editTapped)
+                                          if (!_editTapped)
                                             Image.asset(
                                               "assets/images/drawer-images/edit.png",
                                               color: Color(0xff29b2fe),
                                               width: mQuery.size.width * 0.04,
                                             ),
-                                          if(_editTapped)
+                                          if (_editTapped)
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
+                                                  onTap: () {
                                                     if (_itemValue5.value > 0) {
                                                       _itemValue5.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue5,
-                                                  builder: (context, value5, child) {
-                                                    double totalPrice1 = value5 * lehengaPrice;
+                                                  builder:
+                                                      (context, value5, child) {
+                                                    double totalPrice1 =
+                                                        value5 * lehengaPrice;
                                                     return Text(
                                                       "$value5",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue5.value++,
+                                                  onTap: () =>
+                                                      _itemValue5.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
-
                                               ],
                                             )
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
 
@@ -595,11 +626,13 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue5,
                                         builder: (context, value5, child) {
-                                          double totalPrice = value5 * blousePrice;
+                                          double totalPrice =
+                                              value5 * blousePrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
-                                              fontSize: mQuery.size.height * 0.017,
+                                              fontSize:
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
@@ -609,7 +642,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                   ),
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.016),
-
 
                                 ///  update lehenga
                                 Row(
@@ -625,7 +657,8 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          _editTapped = !_editTapped; // Toggle the value of _editTapped
+                                          _editTapped =
+                                              !_editTapped; // Toggle the value of _editTapped
                                         });
                                       },
                                       child: Stack(
@@ -646,54 +679,70 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue1,
-                                                  builder: (context, value1, child) {
-                                                    double totalPrice1 = value1 * lehengaPrice;
+                                                  builder:
+                                                      (context, value1, child) {
+                                                    double totalPrice1 =
+                                                        value1 * lehengaPrice;
                                                     return Text(
                                                       "$value1",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue1.value++,
+                                                  onTap: () =>
+                                                      _itemValue1.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                               ],
                                             )
-
-
                                         ],
                                       ),
                                     ),
@@ -702,7 +751,8 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
 
                                 SizedBox(height: mQuery.size.height * 0.003),
                                 Padding(
-                                  padding: EdgeInsets.only(right: mQuery.size.width * 0.02),
+                                  padding: EdgeInsets.only(
+                                      right: mQuery.size.width * 0.02),
                                   child: Row(
                                     children: [
                                       Text(
@@ -717,12 +767,13 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue1,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * lehengaPrice;
+                                          double totalPrice =
+                                              value * lehengaPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
@@ -758,64 +809,80 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                               color: Color(0xff29b2fe),
                                               width: mQuery.size.width * 0.04,
                                             ),
-                                          if(_editTapped)
+                                          if (_editTapped)
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                    onTap: ()
-                                                    {
-                                                      if(_itemValue2.value > 0 )
-                                                      {
+                                                    onTap: () {
+                                                      if (_itemValue2.value >
+                                                          0) {
                                                         _itemValue2.value--;
                                                       }
                                                     },
                                                     child: Container(
-                                                      width: mQuery.size.width * 0.1,
-                                                      height: mQuery.size.height * 0.023,
+                                                      width: mQuery.size.width *
+                                                          0.1,
+                                                      height:
+                                                          mQuery.size.height *
+                                                              0.023,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                         border: Border.all(
-                                                            color: Color(0xff29b2fe)),
+                                                            color: Color(
+                                                                0xff29b2fe)),
                                                       ),
                                                       child: Center(
-                                                        child: Icon(Icons.remove,
-                                                            size: mQuery.size.width * 0.045,
-                                                            color: Color(0xff29b2fe)),
+                                                        child: Icon(
+                                                            Icons.remove,
+                                                            size: mQuery.size
+                                                                    .width *
+                                                                0.045,
+                                                            color: Color(
+                                                                0xff29b2fe)),
                                                       ),
-                                                    )
-                                                ),
+                                                    )),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue2,
-                                                  builder: (context, value2, child) {
-                                                    double totalPrice1 = value2 * lehengaPrice;
+                                                  builder:
+                                                      (context, value2, child) {
+                                                    double totalPrice1 =
+                                                        value2 * lehengaPrice;
                                                     return Text(
                                                       "$value2",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue2.value++,
+                                                  onTap: () =>
+                                                      _itemValue2.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
-
-
                                               ],
                                             )
                                         ],
@@ -844,8 +911,10 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                           double totalPrice = value * evPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
-                                            style: TextStyle(fontSize:
-                                            mQuery.size.height * 0.017, fontFamily: 'SatoshiBold',
+                                            style: TextStyle(
+                                              fontSize:
+                                                  mQuery.size.height * 0.017,
+                                              fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
@@ -865,12 +934,12 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         fontFamily: 'SatoshiBold',
                                       ),
                                     ),
-
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          _editTapped = !_editTapped; // Toggle the value of _editTapped
+                                          _editTapped =
+                                              !_editTapped; // Toggle the value of _editTapped
                                         });
                                       },
                                       child: Stack(
@@ -891,47 +960,65 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue3,
-                                                  builder: (context, value3, child) {
-                                                    double totalPrice1 = value3 * nightSuitPrice;
+                                                  builder:
+                                                      (context, value3, child) {
+                                                    double totalPrice1 =
+                                                        value3 * nightSuitPrice;
                                                     return Text(
                                                       "$value3",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue3.value++,
+                                                  onTap: () =>
+                                                      _itemValue3.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
@@ -960,22 +1047,22 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue3,
                                         builder: (context, value3, child) {
-                                          double totalPrice = value3 * nightSuitPrice;
+                                          double totalPrice =
+                                              value3 * nightSuitPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
-                                              fontSize: mQuery.size.height * 0.017,
+                                              fontSize:
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.016),
-
 
                                 // update waistcoat
                                 Row(
@@ -987,7 +1074,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         fontFamily: 'SatoshiBold',
                                       ),
                                     ),
-
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
                                       onTap: () {
@@ -1003,62 +1089,82 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                               color: Color(0xff29b2fe),
                                               width: mQuery.size.width * 0.04,
                                             ),
-                                          if(_editTapped)
+                                          if (_editTapped)
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                    onTap: ()
-                                                    {
-                                                      if (_itemValue4.value > 0) {
+                                                    onTap: () {
+                                                      if (_itemValue4.value >
+                                                          0) {
                                                         _itemValue4.value--;
                                                       }
                                                     },
                                                     child: Container(
-                                                        width: mQuery.size.width * 0.1,
-                                                        height: mQuery.size.height * 0.023,
-                                                        decoration: BoxDecoration(
-                                                          shape: BoxShape.circle,
+                                                        width:
+                                                            mQuery.size.width *
+                                                                0.1,
+                                                        height:
+                                                            mQuery.size.height *
+                                                                0.023,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
                                                           border: Border.all(
-                                                              color: Color(0xff29b2fe)),
+                                                              color: Color(
+                                                                  0xff29b2fe)),
                                                         ),
                                                         child: Center(
-                                                          child: Icon(Icons.remove,
-                                                              size: mQuery.size.width * 0.045,
-                                                              color: Color(0xff29b2fe)),
-                                                        )
-                                                    )
-                                                ),
+                                                          child: Icon(
+                                                              Icons.remove,
+                                                              size: mQuery.size
+                                                                      .width *
+                                                                  0.045,
+                                                              color: Color(
+                                                                  0xff29b2fe)),
+                                                        ))),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue4,
-                                                  builder: (context, value4, child) {
-                                                    double totalPrice1 = value4 * waistCoatPrice;
+                                                  builder:
+                                                      (context, value4, child) {
+                                                    double totalPrice1 =
+                                                        value4 * waistCoatPrice;
                                                     return Text(
                                                       "$value4",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue4.value++,
+                                                  onTap: () =>
+                                                      _itemValue4.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
-
                                               ],
                                             )
                                         ],
@@ -1084,18 +1190,18 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue4,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * waistCoatPrice ;
+                                          double totalPrice =
+                                              value * waistCoatPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -1113,8 +1219,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1131,55 +1236,71 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue6.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue6.value > 0) {
                                                       _itemValue6.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue6,
-                                                  builder: (context, value6, child) {
-                                                    double totalPrice1 = value6 * lehengaPrice;
+                                                  builder:
+                                                      (context, value6, child) {
+                                                    double totalPrice1 =
+                                                        value6 * lehengaPrice;
                                                     return Text(
                                                       "$value6",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue6.value++,
+                                                  onTap: () =>
+                                                      _itemValue6.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1208,18 +1329,18 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue6,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * shortPrice;
+                                          double totalPrice =
+                                              value * shortPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -1237,8 +1358,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1255,55 +1375,71 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue7.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue7.value > 0) {
                                                       _itemValue7.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue7,
-                                                  builder: (context, value7, child) {
-                                                    double totalPrice1 = value7 * lehengaPrice;
+                                                  builder:
+                                                      (context, value7, child) {
+                                                    double totalPrice1 =
+                                                        value7 * lehengaPrice;
                                                     return Text(
                                                       "$value7",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue7.value++,
+                                                  onTap: () =>
+                                                      _itemValue7.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1312,7 +1448,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1334,12 +1469,13 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue7,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * skirtPrice;
+                                          double totalPrice =
+                                              value * skirtPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
@@ -1362,8 +1498,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1380,55 +1515,71 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue6.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue6.value > 0) {
                                                       _itemValue8.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue8,
-                                                  builder: (context, value8, child) {
-                                                    double totalPrice1 = value8 * lehengaPrice;
+                                                  builder:
+                                                      (context, value8, child) {
+                                                    double totalPrice1 =
+                                                        value8 * lehengaPrice;
                                                     return Text(
                                                       "$value8",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue8.value++,
+                                                  onTap: () =>
+                                                      _itemValue8.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1437,7 +1588,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1465,7 +1615,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
@@ -1474,7 +1624,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ],
                                   ),
                                 ),
-
 
                                 SizedBox(height: mQuery.size.height * 0.016),
 
@@ -1488,11 +1637,9 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         fontFamily: 'SatoshiBold',
                                       ),
                                     ),
-
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1509,55 +1656,71 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue9.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue9.value > 0) {
                                                       _itemValue9.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue9,
-                                                  builder: (context, value9, child) {
-                                                    double totalPrice1 = value9 * inWearPrice;
+                                                  builder:
+                                                      (context, value9, child) {
+                                                    double totalPrice1 =
+                                                        value9 * inWearPrice;
                                                     return Text(
                                                       "$value9",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue9.value++,
+                                                  onTap: () =>
+                                                      _itemValue9.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1566,7 +1729,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1587,24 +1749,21 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue9,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * inWearPrice;
+                                          double totalPrice =
+                                              value * inWearPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
-
-
                                     ],
                                   ),
                                 ),
-
 
                                 SizedBox(height: mQuery.size.height * 0.016),
                                 // update socks
@@ -1619,8 +1778,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1637,55 +1795,72 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue10.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue10.value >
+                                                        0) {
                                                       _itemValue10.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue10,
-                                                  builder: (context, value10, child) {
-                                                    double totalPrice1 = value10 * lehengaPrice;
+                                                  builder: (context, value10,
+                                                      child) {
+                                                    double totalPrice1 =
+                                                        value10 * lehengaPrice;
                                                     return Text(
                                                       "$value10",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue10.value++,
+                                                  onTap: () =>
+                                                      _itemValue10.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1694,7 +1869,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1712,22 +1886,21 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ),
                                       ),
                                       Expanded(child: SizedBox()),
-
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue10,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * socksPrice;
+                                          double totalPrice =
+                                              value * socksPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
@@ -1746,8 +1919,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1764,55 +1936,72 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue11.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue11.value >
+                                                        0) {
                                                       _itemValue11.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue11,
-                                                  builder: (context, value11, child) {
-                                                    double totalPrice1 = value11 * frockPrice;
+                                                  builder: (context, value11,
+                                                      child) {
+                                                    double totalPrice1 =
+                                                        value11 * frockPrice;
                                                     return Text(
                                                       "$value11",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue11.value++,
+                                                  onTap: () =>
+                                                      _itemValue11.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1821,7 +2010,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1842,23 +2030,21 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue11,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * frockPrice;
+                                          double totalPrice =
+                                              value * frockPrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
-
                                     ],
                                   ),
                                 ),
-
 
                                 SizedBox(height: mQuery.size.height * 0.016),
 
@@ -1874,8 +2060,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                     ),
                                     Expanded(child: SizedBox()),
                                     GestureDetector(
-                                      onTap: ()
-                                      {
+                                      onTap: () {
                                         setState(() {
                                           _editTapped = !_editTapped;
                                         });
@@ -1892,55 +2077,73 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                             Row(
                                               children: [
                                                 GestureDetector(
-                                                  onTap: ()
-                                                  {
-                                                    if (_itemValue12.value > 0)
-                                                    {
+                                                  onTap: () {
+                                                    if (_itemValue12.value >
+                                                        0) {
                                                       _itemValue12.value--;
                                                     }
                                                   },
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.remove,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 ),
                                                 ValueListenableBuilder<int>(
                                                   valueListenable: _itemValue12,
-                                                  builder: (context, value12, child) {
-                                                    double totalPrice1 = value12 * jumpSuitePrice;
+                                                  builder: (context, value12,
+                                                      child) {
+                                                    double totalPrice1 =
+                                                        value12 *
+                                                            jumpSuitePrice;
                                                     return Text(
                                                       "$value12",
                                                       style: TextStyle(
-                                                        fontSize: mQuery.size.height * 0.017,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontSize:
+                                                            mQuery.size.height *
+                                                                0.017,
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () => _itemValue12.value++,
+                                                  onTap: () =>
+                                                      _itemValue12.value++,
                                                   child: Container(
-                                                    width: mQuery.size.width * 0.1,
-                                                    height: mQuery.size.height * 0.023,
+                                                    width:
+                                                        mQuery.size.width * 0.1,
+                                                    height: mQuery.size.height *
+                                                        0.023,
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: Color(0xff29b2fe)),
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                     child: Center(
                                                       child: Icon(Icons.add,
-                                                          size: mQuery.size.width * 0.045,
-                                                          color: Color(0xff29b2fe)),
+                                                          size: mQuery
+                                                                  .size.width *
+                                                              0.045,
+                                                          color: Color(
+                                                              0xff29b2fe)),
                                                     ),
                                                   ),
                                                 )
@@ -1949,7 +2152,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                         ],
                                       ),
                                     )
-
                                   ],
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
@@ -1970,54 +2172,66 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                       ValueListenableBuilder<int>(
                                         valueListenable: _itemValue12,
                                         builder: (context, value, child) {
-                                          double totalPrice = value * jumpSuitePrice;
+                                          double totalPrice =
+                                              value * jumpSuitePrice;
                                           return Text(
                                             "₹ ${totalPrice.toStringAsFixed(0)}",
                                             style: TextStyle(
                                               fontSize:
-                                              mQuery.size.height * 0.017,
+                                                  mQuery.size.height * 0.017,
                                               fontFamily: 'SatoshiBold',
                                             ),
                                           );
                                         },
                                       ),
-
                                     ],
                                   ),
                                 ),
 
-
                                 Divider(),
-                                SizedBox(height: mQuery.size.height*0.006,),
+                                SizedBox(
+                                  height: mQuery.size.height * 0.006,
+                                ),
                                 Row(
                                   children: [
-                                    Text("Add-On(Cloth Softener)",style: TextStyle(
-                                      color: Color(0xff009c1a),
-                                    ),),
+                                    Text(
+                                      "Add-On(Cloth Softener)",
+                                      style: TextStyle(
+                                        color: Color(0xff009c1a),
+                                      ),
+                                    ),
                                     Expanded(child: SizedBox()),
-                                    Text("₹ 240",style: TextStyle(
-                                        color: Color(0xff29b2fe)
-                                    ),)
+                                    Text(
+                                      "₹ 240",
+                                      style:
+                                          TextStyle(color: Color(0xff29b2fe)),
+                                    )
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Text("₹ 10 PER PIECE"),
                                     Expanded(child: SizedBox()),
-                                    Text("REMOVE",style: TextStyle(
-                                      fontSize: mQuery.size.height*0.016,
-                                      color: Color(0xffff474b),
-                                    ),)
+                                    Text(
+                                      "REMOVE",
+                                      style: TextStyle(
+                                        fontSize: mQuery.size.height * 0.016,
+                                        color: Color(0xffff474b),
+                                      ),
+                                    )
                                   ],
                                 ),
 
-                                SizedBox(height: mQuery.size.height*0.01,),
+                                SizedBox(
+                                  height: mQuery.size.height * 0.01,
+                                ),
                                 Divider(),
-                                Text("WASH & STREAM IRON",style: TextStyle(
-                                    color: Color(0xff29b2fe),
-                                    fontSize: mQuery.size.height *0.016
-                                ),),
-
+                                Text(
+                                  "WASH & STREAM IRON",
+                                  style: TextStyle(
+                                      color: Color(0xff29b2fe),
+                                      fontSize: mQuery.size.height * 0.016),
+                                ),
 
                                 SizedBox(height: mQuery.size.height * 0.01),
                                 Row(
@@ -2108,10 +2322,12 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 ),
                                 Divider(),
 
-                                Text("DRY CLEAN",style: TextStyle(
-                                    color: Color(0xff29b2fe),
-                                    fontSize: mQuery.size.height *0.016
-                                ),),
+                                Text(
+                                  "DRY CLEAN",
+                                  style: TextStyle(
+                                      color: Color(0xff29b2fe),
+                                      fontSize: mQuery.size.height * 0.016),
+                                ),
 
                                 SizedBox(height: mQuery.size.height * 0.01),
                                 Row(
@@ -2158,8 +2374,6 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 ),
                                 SizedBox(height: mQuery.size.height * 0.003),
 
-
-
                                 SizedBox(
                                   height: 20,
                                 )
@@ -2172,25 +2386,23 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
-
               Container(
                 width: double.infinity,
-                height: mQuery.size.height*0.35,
+                height: mQuery.size.height * 0.35,
                 color: Color(0xfff8fcfe),
-                margin: EdgeInsets.symmetric(
-                    horizontal: mQuery.size.width*0.033
-                ),
-                padding: EdgeInsets.symmetric(
-                    horizontal: mQuery.size.width*0.012
-                ),
+                margin:
+                    EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.033),
+                padding:
+                    EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.012),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: mQuery.size.height*0.01,),
+                      SizedBox(
+                        height: mQuery.size.height * 0.01,
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Column(
@@ -2201,7 +2413,7 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                   "Item Total",
                                   style: TextStyle(
                                     fontFamily: 'SatoshiRegular',
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                   ),
                                 ),
@@ -2209,14 +2421,16 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 Text(
                                   "₹ 1,640",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                     fontFamily: 'SatoshiRegular',
                                   ),
                                 )
                               ],
                             ),
-                            SizedBox(height: mQuery.size.height * 0.01,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             DottedLine(
                               direction: Axis.horizontal,
                               alignment: WrapAlignment.center,
@@ -2228,13 +2442,15 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                               dashGapLength: 4.0,
                               dashGapRadius: 0.0,
                             ),
-                            SizedBox(height: mQuery.size.height * 0.01,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             Row(
                               children: [
                                 Text(
                                   "Revised Total",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Color(0xfffe6165),
                                     fontFamily: 'SatoshiRegular',
                                   ),
@@ -2243,15 +2459,16 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 Text(
                                   "₹ 1,660",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Color(0xfffe6165),
                                     fontFamily: 'SatoshiRegular',
                                   ),
                                 )
                               ],
                             ),
-                            SizedBox(height: mQuery.size.height * 0.01,),
-
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             DottedLine(
                               direction: Axis.horizontal,
                               alignment: WrapAlignment.center,
@@ -2263,13 +2480,15 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                               dashGapLength: 4.0,
                               dashGapRadius: 0.0,
                             ),
-                            SizedBox(height: mQuery.size.height * 0.01,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             Row(
                               children: [
                                 Text(
                                   "Delivery Charges",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                     fontFamily: 'SatoshiRegular',
                                   ),
@@ -2278,14 +2497,16 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 Text(
                                   "₹ 50",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                     fontFamily: 'SatoshiRegular',
                                   ),
                                 )
                               ],
                             ),
-                            SizedBox(height: mQuery.size.height * 0.01,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             DottedLine(
                               direction: Axis.horizontal,
                               alignment: WrapAlignment.center,
@@ -2297,22 +2518,26 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                               dashGapLength: 4.0,
                               dashGapRadius: 0.0,
                             ),
-
-                            SizedBox(height: mQuery.size.height * 0.01,),
+                            SizedBox(
+                              height: mQuery.size.height * 0.01,
+                            ),
                             Row(
                               children: [
-                                Text("Tax",
+                                Text(
+                                  "Tax",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                     fontFamily: 'SatoshiRegular',
                                   ),
                                 ),
-                                Expanded(child: SizedBox(),),
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
                                 Text(
                                   "₹ 60",
                                   style: TextStyle(
-                                    fontSize: mQuery.size.height*0.018,
+                                    fontSize: mQuery.size.height * 0.018,
                                     color: Colors.black54,
                                     fontFamily: 'SatoshiRegular',
                                   ),
@@ -2322,50 +2547,49 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                             Divider(),
                             Row(
                               children: [
-                                Text("Grand Total",
+                                Text(
+                                  "Grand Total",
                                   style: TextStyle(
-                                      fontSize: mQuery.size.height*0.02,
-                                      fontFamily: 'SatoshiMedium'
-                                  ),
+                                      fontSize: mQuery.size.height * 0.02,
+                                      fontFamily: 'SatoshiMedium'),
                                 ),
                                 Expanded(child: SizedBox()),
-                                Text("₹ 1,770",
+                                Text(
+                                  "₹ 1,770",
                                   style: TextStyle(
-                                      fontSize: mQuery.size.height*0.02,
+                                      fontSize: mQuery.size.height * 0.02,
                                       color: Color(0xff29b2fe),
-                                      fontFamily: 'SatoshiMedium'
-                                  ),
+                                      fontFamily: 'SatoshiMedium'),
                                 )
                               ],
                             )
                           ],
                         ),
                       ),
-                      SizedBox(height: mQuery.size.height*0.03,),
-
+                      SizedBox(
+                        height: mQuery.size.height * 0.03,
+                      ),
                       Container(
                         width: double.infinity,
-                        height: mQuery.size.height*0.06,
+                        height: mQuery.size.height * 0.06,
                         margin: EdgeInsets.symmetric(
-                            horizontal: mQuery.size.width*0.03
-                        ),
+                            horizontal: mQuery.size.width * 0.03),
                         padding: EdgeInsets.symmetric(
-                            horizontal: mQuery.size.width*0.033
-                        ),
+                            horizontal: mQuery.size.width * 0.033),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
-                            color: Color(0xffff474b)
-                        ),
+                            color: Color(0xffff474b)),
                         child: Row(
                           children: [
-                            Text("Cash to be collected",style: TextStyle(
-                                color: Colors.white
-                            ),
+                            Text(
+                              "Cash to be collected",
+                              style: TextStyle(color: Colors.white),
                             ),
                             Expanded(child: SizedBox()),
-                            Text("₹ 20.00",style: TextStyle(
-                                color: Colors.white
-                            ),)
+                            Text(
+                              "₹ 20.00",
+                              style: TextStyle(color: Colors.white),
+                            )
                           ],
                         ),
                       ),
@@ -2373,24 +2597,27 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                   ),
                 ),
               ),
-
-              SizedBox(height: mQuery.size.height*0.02,),
+              SizedBox(
+                height: mQuery.size.height * 0.02,
+              ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: mQuery.size.width*0.033
-                ),
+                padding:
+                    EdgeInsets.symmetric(horizontal: mQuery.size.width * 0.033),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Extra Note"),
-                    SizedBox(height: mQuery.size.height*0.015,),
+                    SizedBox(
+                      height: mQuery.size.height * 0.015,
+                    ),
                     Text("Lorem Ipsum is a dummy text in advertising and \n"
                         "typesetting industry since 1500"),
-                    SizedBox(height: mQuery.size.height*0.015,),
-
+                    SizedBox(
+                      height: mQuery.size.height * 0.015,
+                    ),
                     Container(
                       width: double.infinity,
-                      height: mQuery.size.height*0.1,
+                      height: mQuery.size.height * 0.1,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(6),
@@ -2399,45 +2626,52 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: Offset(0,0)
-                            )
-                          ]
-                      ),
+                                offset: Offset(0, 0))
+                          ]),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(width: mQuery.size.width*0.047,),
+                              SizedBox(
+                                width: mQuery.size.width * 0.047,
+                              ),
                               Container(
-                                width: mQuery.size.width*0.06,
-                                height: mQuery.size.height*0.02,
+                                width: mQuery.size.width * 0.06,
+                                height: mQuery.size.height * 0.02,
                                 decoration: BoxDecoration(
                                     color: Color(0xff29b2fe),
-                                    shape: BoxShape.circle
-                                ),
+                                    shape: BoxShape.circle),
                                 child: Center(
-                                  child: Icon(Icons.check,
+                                  child: Icon(
+                                    Icons.check,
                                     color: Colors.white,
-                                    size: mQuery.size.width*0.032,),
+                                    size: mQuery.size.width * 0.032,
+                                  ),
                                 ),
                               ),
-                              SizedBox(width: mQuery.size.width*0.012,),
+                              SizedBox(
+                                width: mQuery.size.width * 0.012,
+                              ),
                               Text("Additional Instructions")
                             ],
                           ),
-                          Text("Hand the order directly and don't ring the bell",style: TextStyle(
-                            color: Color(0xff009c1a),
-                          ),)
+                          Text(
+                            "Hand the order directly and don't ring the bell",
+                            style: TextStyle(
+                              color: Color(0xff009c1a),
+                            ),
+                          )
                         ],
                       ),
                     ),
-
-                    SizedBox(height: mQuery.size.height*0.015,),
+                    SizedBox(
+                      height: mQuery.size.height * 0.015,
+                    ),
                     Container(
                       width: double.infinity,
-                      height: mQuery.size.height*0.1,
+                      height: mQuery.size.height * 0.1,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(6),
@@ -2446,46 +2680,56 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 10,
-                                offset: Offset(0,0)
-                            )
-                          ]
-                      ),
+                                offset: Offset(0, 0))
+                          ]),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
                             children: [
-                              SizedBox(width: mQuery.size.width*0.046,),
+                              SizedBox(
+                                width: mQuery.size.width * 0.046,
+                              ),
                               Container(
-                                width: mQuery.size.width*0.06,
-                                height: mQuery.size.height*0.02,
+                                width: mQuery.size.width * 0.06,
+                                height: mQuery.size.height * 0.02,
                                 decoration: BoxDecoration(
                                     color: Color(0xff29b2fe),
-                                    shape: BoxShape.circle
-                                ),
+                                    shape: BoxShape.circle),
                                 child: Center(
-                                  child: Icon(Icons.check,
+                                  child: Icon(
+                                    Icons.check,
                                     color: Colors.white,
-                                    size: mQuery.size.width*0.032,),
+                                    size: mQuery.size.width * 0.032,
+                                  ),
                                 ),
                               ),
-                              SizedBox(width: mQuery.size.width*0.012,),
+                              SizedBox(
+                                width: mQuery.size.width * 0.012,
+                              ),
                               Text("Delivery Instructions")
                             ],
                           ),
                           Row(
                             children: [
-                              SizedBox(width: mQuery.size.width*0.042,),
-                              Icon(Icons.arrow_right,
-                                color: Color(0xff29b2fe),),
+                              SizedBox(
+                                width: mQuery.size.width * 0.042,
+                              ),
+                              Icon(
+                                Icons.arrow_right,
+                                color: Color(0xff29b2fe),
+                              ),
                               Column(
                                 children: [
-                                  Text("Play voice directions",style: TextStyle(
-                                    color: Color(0xff29b2fe),
-                                  ),),
+                                  Text(
+                                    "Play voice directions",
+                                    style: TextStyle(
+                                      color: Color(0xff29b2fe),
+                                    ),
+                                  ),
                                   Container(
-                                    width: mQuery.size.width*0.38,
-                                    height: mQuery.size.height*0.001,
+                                    width: mQuery.size.width * 0.38,
+                                    height: mQuery.size.height * 0.001,
                                     color: Color(0xff29b2fe),
                                   )
                                 ],
@@ -2498,23 +2742,20 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                   ],
                 ),
               ),
-
-
-
-              SizedBox(height: mQuery.size.height*0.02,),
+              SizedBox(
+                height: mQuery.size.height * 0.02,
+              ),
               Column(
                 children: [
                   GestureDetector(
-                    onTap: ()
-                    {
-                       _showConfirmationDialog();
+                    onTap: () {
+                      // _showConfirmationDialog();
                     },
                     child: Container(
                       width: double.infinity,
                       height: mQuery.size.height * 0.065,
                       margin: EdgeInsets.symmetric(
-                          horizontal: mQuery.size.width*0.03
-                      ),
+                          horizontal: mQuery.size.width * 0.03),
                       padding: EdgeInsets.symmetric(
                           horizontal: mQuery.size.width * 0.03),
                       decoration: BoxDecoration(
@@ -2525,33 +2766,48 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: mQuery.size.height*0.01,),
-                              Text("TOTAL 33 ITEMS",style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: mQuery.size.height*0.017
-                              ),),
-                              Text("₹ 1770.00",style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: mQuery.size.height*0.019
-                              ),),
+                              SizedBox(
+                                height: mQuery.size.height * 0.01,
+                              ),
+                              Text(
+                                "TOTAL 33 ITEMS",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: mQuery.size.height * 0.017),
+                              ),
+                              Text(
+                                "₹ 1770.00",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: mQuery.size.height * 0.019),
+                              ),
                             ],
                           ),
                           Expanded(child: SizedBox()),
                           Row(
                             children: [
-                              Text("Confirm Payment",style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: mQuery.size.height*0.021
-                              ),),
-                              SizedBox(width: mQuery.size.width*0.01,),
-                              Icon(Icons.arrow_right,color: Colors.white,)
+                              Text(
+                                "Confirm Delivery",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: mQuery.size.height * 0.021),
+                              ),
+                              SizedBox(
+                                width: mQuery.size.width * 0.01,
+                              ),
+                              Icon(
+                                Icons.arrow_right,
+                                color: Colors.white,
+                              )
                             ],
                           )
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: mQuery.size.height*0.02,)
+                  SizedBox(
+                    height: mQuery.size.height * 0.02,
+                  )
                 ],
               )
             ],
@@ -2561,4 +2817,3 @@ class _PickUpOrderSummaryState extends State<PickUpOrderSummary> {
     );
   }
 }
-

@@ -179,7 +179,7 @@ class _OTPPageState extends State<OTPPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Enter 4 Digit Code $OTP",
+                          "Enter 4 Digit Code",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: mQuery.size.height * 0.0215,
@@ -200,6 +200,7 @@ class _OTPPageState extends State<OTPPage> {
                           defaultPinTheme: defaultPinTheme.copyWith(
                             textStyle: TextStyle(
                                 fontSize: 34,
+                                fontFamily: 'SatoshiBold',
                                 color: Colors.black), // Set text color to black
                           ),
                           onChanged: (value) {

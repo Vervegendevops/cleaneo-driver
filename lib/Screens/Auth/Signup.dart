@@ -184,19 +184,22 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: mQuery.size.width * 0.045,
-                        right: mQuery.size.width * 0.045,
                         top: mQuery.size.height * 0.025),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Full Name*",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'SatoshiBold',
-                              fontSize: mQuery.size.height * 0.02,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: mQuery.size.width*0.045
+                            ),
+                            child: Text(
+                              "Full Name*",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'SatoshiBold',
+                                fontSize: mQuery.size.height * 0.02,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -205,6 +208,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           Container(
                             width: double.infinity,
                             height: mQuery.size.height * 0.06,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: mQuery.size.width*0.045
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -255,12 +261,17 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: mQuery.size.height * 0.03,
                           ),
                           // PHONE NUMBER
-                          Text(
-                            "Phone Number*",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'SatoshiBold',
-                              fontSize: mQuery.size.height * 0.02,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: mQuery.size.width*0.045
+                            ),
+                            child: Text(
+                              "Phone Number*",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'SatoshiBold',
+                                fontSize: mQuery.size.height * 0.02,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -270,6 +281,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           Container(
                             width: double.infinity,
                             height: mQuery.size.height * 0.066,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: mQuery.size.width*0.045
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -363,31 +377,46 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: 5,
                           ),
                           (Signupphone.length > 0 && Signupphone.length < 10)
-                              ? Text(
-                                  "*Please enter a valid mobile number.",
-                                  style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.013,
-                                      fontFamily: 'SatoshiMedium',
-                                      color: Colors.red),
-                                )
-                              : Text(
-                                  "*We'll send a one time 4-digit OTP to your phone",
-                                  style: TextStyle(
-                                      fontSize: mQuery.size.height * 0.013,
-                                      fontFamily: 'SatoshiMedium',
-                                      color: Colors.grey),
+                              ? Padding(
+                                padding: EdgeInsets.only(
+                                  left: mQuery.size.width*0.045
                                 ),
+                                child: Text(
+                                    "*Please enter a valid mobile number.",
+                                    style: TextStyle(
+                                        fontSize: mQuery.size.height * 0.013,
+                                        fontFamily: 'SatoshiMedium',
+                                        color: Colors.red),
+                                  ),
+                              )
+                              : Padding(
+                                padding: EdgeInsets.only(
+                                  left: mQuery.size.width*0.045
+                                ),
+                                child: Text(
+                                    "*We'll send a one time 4-digit OTP to your phone",
+                                    style: TextStyle(
+                                        fontSize: mQuery.size.height * 0.013,
+                                        fontFamily: 'SatoshiMedium',
+                                        color: Colors.grey),
+                                  ),
+                              ),
 
                           SizedBox(
                             height: mQuery.size.height * 0.03,
                           ),
                           // Email
-                          Text(
-                            "Email",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'SatoshiBold',
-                              fontSize: mQuery.size.height * 0.02,
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: mQuery.size.width*0.045
+                            ),
+                            child: Text(
+                              "Email",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'SatoshiBold',
+                                fontSize: mQuery.size.height * 0.02,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -396,6 +425,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           Container(
                             width: double.infinity,
                             height: mQuery.size.height * 0.06,
+                            margin: EdgeInsets.symmetric(
+                              horizontal: mQuery.size.width*0.045
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -842,6 +874,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: Container(
                               width: double.infinity,
                               height: mQuery.size.height * 0.06,
+                              margin: EdgeInsets.symmetric(
+                                horizontal: mQuery.size.width*0.045
+                              ),
                               decoration: BoxDecoration(
                                   color: (Signupemail.length > 0 &&
                                           Signupname.length > 0 &&

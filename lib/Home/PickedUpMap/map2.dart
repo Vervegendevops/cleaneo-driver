@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:cleaneo_driver_app/Home/PickedUpMap/deliverOTP.dart';
 import 'package:cleaneo_driver_app/Home/Pickup/Components/receive_otp.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,17 +19,17 @@ Map userVendor = {};
 
 // https://drycleaneo.com/CleaneoDriver/api/user_vendor/000000127
 
-class PickupMap extends StatefulWidget {
+class PickupMap2 extends StatefulWidget {
   Map order;
-  PickupMap({super.key, required this.order});
+  PickupMap2({super.key, required this.order});
 
   @override
-  State<PickupMap> createState() => _PickupMapState();
+  State<PickupMap2> createState() => _PickupMap2State();
 }
 
 List<LatLng> polyLineCoordinates = [];
 
-class _PickupMapState extends State<PickupMap> {
+class _PickupMap2State extends State<PickupMap2> {
   @override
   void initState() {
     super.initState();
@@ -64,7 +65,7 @@ class _PickupMapState extends State<PickupMap> {
     // Replace latitude and longitude with the actual location you want to open.
 
     String googleMapsUrl =
-        'https://www.google.com/maps/search/?api=1&query=${double.parse(widget.order['UserLatitude'])}, ${double.parse(widget.order['UserLongitude'])}';
+        'https://www.google.com/maps/search/?api=1&query=${double.parse(widget.order['VendorLatitude'])}, ${double.parse(widget.order['VendorLongitude'])}';
 
     if (await canLaunch(googleMapsUrl)) {
       await launch(googleMapsUrl);
@@ -100,7 +101,6 @@ class _PickupMapState extends State<PickupMap> {
   }
 
   Widget build(BuildContext context) {
-    print(widget.order['OrderID']);
     var mQuery = MediaQuery.of(context);
     List items = jsonDecode(widget.order['Items']);
 
@@ -121,7 +121,7 @@ class _PickupMapState extends State<PickupMap> {
         body: Stack(
           children: [
             showMapSample
-                ? MapSample(
+                ? MapSample2(
                     orders: widget.order,
                   )
                 : Center(child: CircularProgressIndicator()),
@@ -590,7 +590,7 @@ class _PickupMapState extends State<PickupMap> {
                                 //     MaterialPageRoute(builder: (_) => otp1()));
                                 Navigator.pushAndRemoveUntil(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return ReceiveOTPage(
+                                  return DeliveryOTPage(
                                     orderID: widget.order['OrderID'],
                                   );
                                 }), (route) => false);
@@ -608,7 +608,7 @@ class _PickupMapState extends State<PickupMap> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Receive Order",
+                                      "Deliver Order",
                                       style: TextStyle(
                                           fontSize: 18,
                                           color:
@@ -627,26 +627,26 @@ class _PickupMapState extends State<PickupMap> {
   }
 }
 
-class MapSample extends StatefulWidget {
+class MapSample2 extends StatefulWidget {
   Map orders;
-  MapSample({super.key, required this.orders});
+  MapSample2({super.key, required this.orders});
 
   @override
-  State<MapSample> createState() => MapSampleState();
+  State<MapSample2> createState() => MapSample2State();
 }
 
 List<Map<String, dynamic>> mapdata = [];
 List<Map<String, dynamic>> mapdata2 = [];
 
-class MapSampleState extends State<MapSample> {
+class MapSample2State extends State<MapSample2> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
   @override
   Widget build(BuildContext context) {
     CameraPosition _kGooglePlex = CameraPosition(
-      target: LatLng(double.parse(widget.orders['UserLatitude']),
-          double.parse(widget.orders['UserLongitude'])),
+      target: LatLng(double.parse(widget.orders['VendorLatitude']),
+          double.parse(widget.orders['VendorLongitude'])),
       zoom: 14.4746,
     );
     print(double.parse(widget.orders['UserLongitude']));
