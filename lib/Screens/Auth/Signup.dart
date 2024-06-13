@@ -55,11 +55,7 @@ class _SignUpPageState extends State<SignUpPage> {
         print(response.body);
         if (response.body == "false") {
           OTP = (1000 + Random().nextInt(9000)).toString();
-          fetchResponse2();
-
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return OTPPage();
-          }));
+          fetchResponse3(phoneNumber);
         } else {
           setState(() {
             ispressed = false;
@@ -108,6 +104,32 @@ class _SignUpPageState extends State<SignUpPage> {
           UserID = 'CleaneoAgent$CountUser';
         }
         print(UserID);
+        return response.body == 'true';
+      } else {
+        // If the response status code is not 200, throw an exception or handle
+        // the error accordingly.
+        throw Exception('Failed to fetch data: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Handle exceptions if any occur during the request.
+      print('Error fetching data: $e');
+      return false; // Return false in case of an error.
+    }
+  }
+
+  Future<Object> fetchResponse3(String phoneNumber) async {
+    final url =
+        'http://app.pingbix.com/SMSApi/send?userid=cleaneoapp&password=EghpgNS3&sendMethod=quick&mobile=$phoneNumber&msg=Hello+${loginData['name']}%2C%0D%0AYour+OTP+for+Cleaneo+login%2Fsignup+is+%3A+$OTP.%0D%0AThank+You&senderid=CLE123&msgType=text&dltEntityId=&dltTemplateId=1207171510723882445&duplicatecheck=true&output=json';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        print('otp Sent');
+        fetchResponse2();
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return OTPPage();
+        }));
         return response.body == 'true';
       } else {
         // If the response status code is not 200, throw an exception or handle
@@ -183,16 +205,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         topRight: Radius.circular(16)),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        top: mQuery.size.height * 0.025),
+                    padding: EdgeInsets.only(top: mQuery.size.height * 0.025),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: mQuery.size.width*0.045
-                            ),
+                                horizontal: mQuery.size.width * 0.045),
                             child: Text(
                               "Full Name*",
                               style: TextStyle(
@@ -209,8 +229,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             width: double.infinity,
                             height: mQuery.size.height * 0.06,
                             margin: EdgeInsets.symmetric(
-                                horizontal: mQuery.size.width*0.045
-                            ),
+                                horizontal: mQuery.size.width * 0.045),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -263,8 +282,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           // PHONE NUMBER
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: mQuery.size.width*0.045
-                            ),
+                                horizontal: mQuery.size.width * 0.045),
                             child: Text(
                               "Phone Number*",
                               style: TextStyle(
@@ -282,8 +300,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             width: double.infinity,
                             height: mQuery.size.height * 0.066,
                             margin: EdgeInsets.symmetric(
-                                horizontal: mQuery.size.width*0.045
-                            ),
+                                horizontal: mQuery.size.width * 0.045),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -378,29 +395,27 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           (Signupphone.length > 0 && Signupphone.length < 10)
                               ? Padding(
-                                padding: EdgeInsets.only(
-                                  left: mQuery.size.width*0.045
-                                ),
-                                child: Text(
+                                  padding: EdgeInsets.only(
+                                      left: mQuery.size.width * 0.045),
+                                  child: Text(
                                     "*Please enter a valid mobile number.",
                                     style: TextStyle(
                                         fontSize: mQuery.size.height * 0.013,
                                         fontFamily: 'SatoshiMedium',
                                         color: Colors.red),
                                   ),
-                              )
+                                )
                               : Padding(
-                                padding: EdgeInsets.only(
-                                  left: mQuery.size.width*0.045
-                                ),
-                                child: Text(
+                                  padding: EdgeInsets.only(
+                                      left: mQuery.size.width * 0.045),
+                                  child: Text(
                                     "*We'll send a one time 4-digit OTP to your phone",
                                     style: TextStyle(
                                         fontSize: mQuery.size.height * 0.013,
                                         fontFamily: 'SatoshiMedium',
                                         color: Colors.grey),
                                   ),
-                              ),
+                                ),
 
                           SizedBox(
                             height: mQuery.size.height * 0.03,
@@ -408,8 +423,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           // Email
                           Padding(
                             padding: EdgeInsets.only(
-                              left: mQuery.size.width*0.045
-                            ),
+                                left: mQuery.size.width * 0.045),
                             child: Text(
                               "Email",
                               style: TextStyle(
@@ -426,8 +440,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             width: double.infinity,
                             height: mQuery.size.height * 0.06,
                             margin: EdgeInsets.symmetric(
-                              horizontal: mQuery.size.width*0.045
-                            ),
+                                horizontal: mQuery.size.width * 0.045),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
@@ -526,19 +539,21 @@ class _SignUpPageState extends State<SignUpPage> {
                                                           BorderRadius.only(
                                                               topLeft: Radius
                                                                   .circular(20),
-                                                              topRight:
-                                                                  Radius.circular(
+                                                              topRight: Radius
+                                                                  .circular(
                                                                       20))),
                                                   child: Padding(
-                                                    padding: const EdgeInsets.all(
-                                                        20.0),
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            20.0),
                                                     child: Column(
                                                       children: [
                                                         Text(
                                                           "Terms of Service",
                                                           style: TextStyle(
                                                             fontSize: mQuery
-                                                                    .size.height *
+                                                                    .size
+                                                                    .height *
                                                                 0.027,
                                                             color: Colors.black,
                                                             fontFamily:
@@ -559,8 +574,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                                   'SatoshiMedium'),
                                                         ),
                                                         SizedBox(
-                                                            height: mQuery
-                                                                    .size.height *
+                                                            height: mQuery.size
+                                                                    .height *
                                                                 0.01),
                                                         Text(
                                                           "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
@@ -573,8 +588,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                                   'SatoshiMedium'),
                                                         ),
                                                         SizedBox(
-                                                            height: mQuery
-                                                                    .size.height *
+                                                            height: mQuery.size
+                                                                    .height *
                                                                 0.01),
                                                         Text(
                                                           "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
@@ -647,19 +662,21 @@ class _SignUpPageState extends State<SignUpPage> {
                                                           BorderRadius.only(
                                                               topLeft: Radius
                                                                   .circular(20),
-                                                              topRight:
-                                                                  Radius.circular(
+                                                              topRight: Radius
+                                                                  .circular(
                                                                       20))),
                                                   child: Padding(
-                                                    padding: const EdgeInsets.all(
-                                                        20.0),
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            20.0),
                                                     child: Column(
                                                       children: [
                                                         Text(
                                                           "Privacy Policy",
                                                           style: TextStyle(
                                                             fontSize: mQuery
-                                                                    .size.height *
+                                                                    .size
+                                                                    .height *
                                                                 0.027,
                                                             color: Colors.black,
                                                             fontFamily:
@@ -680,8 +697,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                                   'SatoshiMedium'),
                                                         ),
                                                         SizedBox(
-                                                            height: mQuery
-                                                                    .size.height *
+                                                            height: mQuery.size
+                                                                    .height *
                                                                 0.01),
                                                         Text(
                                                           "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
@@ -694,8 +711,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                                   'SatoshiMedium'),
                                                         ),
                                                         SizedBox(
-                                                            height: mQuery
-                                                                    .size.height *
+                                                            height: mQuery.size
+                                                                    .height *
                                                                 0.01),
                                                         Text(
                                                           "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
@@ -755,11 +772,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                                   0.5,
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
-                                                  borderRadius: BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(20),
-                                                      topRight:
-                                                          Radius.circular(20))),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  20),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  20))),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(20.0),
@@ -772,7 +792,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                             mQuery.size.height *
                                                                 0.027,
                                                         color: Colors.black,
-                                                        fontFamily: 'SatoshiBold',
+                                                        fontFamily:
+                                                            'SatoshiBold',
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -781,9 +802,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                                     Text(
                                                       "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
                                                       style: TextStyle(
-                                                          fontSize:
-                                                              mQuery.size.height *
-                                                                  0.0165,
+                                                          fontSize: mQuery
+                                                                  .size.height *
+                                                              0.0165,
                                                           fontFamily:
                                                               'SatoshiMedium'),
                                                     ),
@@ -794,9 +815,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                                     Text(
                                                       "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
                                                       style: TextStyle(
-                                                          fontSize:
-                                                              mQuery.size.height *
-                                                                  0.0165,
+                                                          fontSize: mQuery
+                                                                  .size.height *
+                                                              0.0165,
                                                           fontFamily:
                                                               'SatoshiMedium'),
                                                     ),
@@ -807,9 +828,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                                     Text(
                                                       "Welcome to our demo service! Before you begin using our platform, please read the following Terms of Service carefully. By accessing or using our service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
                                                       style: TextStyle(
-                                                          fontSize:
-                                                              mQuery.size.height *
-                                                                  0.0165,
+                                                          fontSize: mQuery
+                                                                  .size.height *
+                                                              0.0165,
                                                           fontFamily:
                                                               'SatoshiMedium'),
                                                     )
@@ -875,8 +896,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: double.infinity,
                               height: mQuery.size.height * 0.06,
                               margin: EdgeInsets.symmetric(
-                                horizontal: mQuery.size.width*0.045
-                              ),
+                                  horizontal: mQuery.size.width * 0.045),
                               decoration: BoxDecoration(
                                   color: (Signupemail.length > 0 &&
                                           Signupname.length > 0 &&
