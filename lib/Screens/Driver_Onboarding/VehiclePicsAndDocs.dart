@@ -60,7 +60,7 @@ class _VehPicsState extends State<VehPics> {
 
     // JSON data
     Map<String, String> jsonFields = {
-      "id": UserID,
+      "ID": UserID,
       "name": Signupname,
       "phone": Signupphone,
       "email": Signupemail,
@@ -472,6 +472,37 @@ class _VehPicsState extends State<VehPics> {
                         GestureDetector(
                           onTap: () {
                             print('dsvds');
+                            print(Signupphone);
+                            print(Signupemail);
+                            print(Signupname);
+                            print(UserID);
+                            print(expiry);
+                            print(aadhar);
+                            print(pan);
+                            print(drivingLicense1);
+                            print(drivingLicense2);
+                            print(aadharDetails1);
+                            print(aadharDetails2);
+                            print(panDetails1);
+                            print(brand);
+                            print(model);
+                            print(year);
+                            print(licensePlate);
+                            print(registrationPlate);
+                            print(vehicleIdentificationNumber);
+                            print(chasisNumber);
+                            print(insuranceNumber);
+                            print(insuranceExpiryDate);
+                            print(vehicleInspection);
+                            print(vehicleInspectionExpiryDate);
+                            print(vehiclePictures1);
+                            print("jhf k k $vehiclePictures2");
+                            print(vehiclePictures3);
+                            print("cnmmhfm : $vehiclePictures4");
+                            print(vehicleDocuments1);
+                            print("dikkat : $vehicleDocuments2");
+                            print(vehicleDocuments3);
+                            print(" data : $vehicleDocuments4");
                             if (Signupphone.isNotEmpty &&
                                 Signupemail.isNotEmpty &&
                                 Signupname.isNotEmpty &&

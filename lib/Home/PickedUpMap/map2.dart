@@ -262,102 +262,86 @@ class _PickupMap2State extends State<PickupMap2> {
                         SizedBox(
                           height: mQuery.size.height * 0.016,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25, right: 25),
-                          child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.white,
-                                boxShadow: const [
-                                  BoxShadow(
-                                      color: Color.fromARGB(255, 212, 212, 212),
-                                      spreadRadius: 1,
-                                      blurRadius: 10)
-                                ]),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.2,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'esgvsxb',
-                                        // mapdata.isEmpty
-                                        //     ? "Loading"
-                                        //     : "Rs. ${mapdata[0]['Drivers_earning']}",
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff1e2a52),
-                                          height: 19 / 16,
-                                        ),
-                                        textAlign: TextAlign.left,
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color.fromARGB(255, 212, 212, 212),
+                                    spreadRadius: 1,
+                                    blurRadius: 10)
+                              ]),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '${widget.order['PickupDate']}',
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff1e2a52),
+                                        height: 19 / 16,
                                       ),
-                                      AutoSizeText(
-                                        "Total Earning",
-                                        minFontSize: 7,
-                                        maxFontSize: 10,
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xff1e2a52),
-                                          height: 17 / 14,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 1,
-                                  height: 30,
-                                  color:
-                                      const Color.fromARGB(255, 207, 207, 207),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.2,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'dvsb',
-                                        // mapdata.isEmpty
-                                        //     ? "Loading"
-                                        //     : "Rs. ${mapdata[0]['Total_price']}",
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff1e2a52),
-                                          height: 19 / 16,
-                                        ),
-                                        textAlign: TextAlign.left,
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    Text(
+                                      "Pickup Date",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff1e2a52),
+                                        height: 17 / 14,
                                       ),
-                                      AutoSizeText(
-                                        "Total Billing Amount",
-                                        minFontSize: 7,
-                                        maxFontSize: 10,
-                                        style: TextStyle(
-                                          fontFamily: "Inter",
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xff1e2a52),
-                                          height: 17 / 14,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      )
-                                    ],
-                                  ),
+                                      textAlign: TextAlign.left,
+                                    )
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              Container(
+                                width: 1,
+                                height: 30,
+                                color: const Color.fromARGB(255, 207, 207, 207),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "${widget.order['PickupTime']}",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff1e2a52),
+                                        height: 19 / 16,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    Text(
+                                      "Pickup Time",
+                                      style: TextStyle(
+                                        fontFamily: "Inter",
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff1e2a52),
+                                        height: 17 / 14,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(

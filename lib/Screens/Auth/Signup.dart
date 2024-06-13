@@ -119,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Future<Object> fetchResponse3(String phoneNumber) async {
     final url =
-        'http://app.pingbix.com/SMSApi/send?userid=cleaneoapp&password=EghpgNS3&sendMethod=quick&mobile=$phoneNumber&msg=Hello+${loginData['name']}%2C%0D%0AYour+OTP+for+Cleaneo+login%2Fsignup+is+%3A+$OTP.%0D%0AThank+You&senderid=CLE123&msgType=text&dltEntityId=&dltTemplateId=1207171510723882445&duplicatecheck=true&output=json';
+        'http://app.pingbix.com/SMSApi/send?userid=cleaneoapp&password=EghpgNS3&sendMethod=quick&mobile=$phoneNumber&msg=Hello+$Signupname%2C%0D%0AYour+OTP+for+Cleaneo+login%2Fsignup+is+%3A+$OTP.%0D%0AThank+You&senderid=CLE123&msgType=text&dltEntityId=&dltTemplateId=1207171510723882445&duplicatecheck=true&output=json';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -872,6 +872,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     setState(() {
                                       ispressed = true;
                                     });
+                                    print(Signupname);
                                     if (Signupphone.length == 10 &&
                                         Signupemail.length > 0 &&
                                         Signupname.length > 0) {

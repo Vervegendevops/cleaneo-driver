@@ -280,28 +280,23 @@ class _PickupMapState extends State<PickupMap> {
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.2,
+                                      MediaQuery.of(context).size.width * 0.25,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'esgvsxb',
-                                        // mapdata.isEmpty
-                                        //     ? "Loading"
-                                        //     : "Rs. ${mapdata[0]['Drivers_earning']}",
+                                        '${widget.order['PickupDate']}',
                                         style: TextStyle(
                                           fontFamily: "Inter",
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff1e2a52),
                                           height: 19 / 16,
                                         ),
                                         textAlign: TextAlign.left,
                                       ),
-                                      AutoSizeText(
-                                        "Total Earning",
-                                        minFontSize: 7,
-                                        maxFontSize: 10,
+                                      Text(
+                                        "Pickup Date",
                                         style: TextStyle(
                                           fontFamily: "Inter",
                                           fontSize: 10,
@@ -322,28 +317,23 @@ class _PickupMapState extends State<PickupMap> {
                                 ),
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.2,
+                                      MediaQuery.of(context).size.width * 0.25,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'dvsb',
-                                        // mapdata.isEmpty
-                                        //     ? "Loading"
-                                        //     : "Rs. ${mapdata[0]['Total_price']}",
+                                        "${widget.order['PickupTime']}",
                                         style: TextStyle(
                                           fontFamily: "Inter",
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff1e2a52),
                                           height: 19 / 16,
                                         ),
                                         textAlign: TextAlign.left,
                                       ),
-                                      AutoSizeText(
-                                        "Total Billing Amount",
-                                        minFontSize: 7,
-                                        maxFontSize: 10,
+                                      Text(
+                                        "Pickup Time",
                                         style: TextStyle(
                                           fontFamily: "Inter",
                                           fontSize: 10,
