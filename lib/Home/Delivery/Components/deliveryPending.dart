@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cleaneo_driver_app/Global/global.dart';
+import 'package:cleaneo_driver_app/Home/PickedUpMap/map2.dart';
 import 'package:cleaneo_driver_app/Home/PickupMap/map.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -393,13 +394,13 @@ class _DeliveryNewOrdersssState extends State<DeliveryNewOrdersss> {
                         int countItems =
                             jsonDecode(orders[index]['Items']).length;
 
-                        return Count == 6
+                        return Count == 5
                             ? GestureDetector(
                                 onTap: () {
                                   // _showOrderDetails(context, orders[index]);
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return PickupMap(order: orders[index]);
+                                    return PickupMap2(order: orders[index]);
                                   }));
                                 },
                                 child: Container(

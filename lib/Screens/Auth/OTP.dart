@@ -8,6 +8,7 @@ import 'package:cleaneo_driver_app/Screens/Driver_Onboarding/DL.dart';
 import 'package:cleaneo_driver_app/Screens/Driver_Onboarding/Verifying.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
 import 'package:cleaneo_driver_app/end.dart';
+import 'package:cleaneo_driver_app/main.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
@@ -187,8 +188,7 @@ class _OTPPageState extends State<OTPPage> {
                         ),
                         SizedBox(height: mQuery.size.height * 0.006),
                         Text(
-                          "Sent to " +
-                              (auth == 'login' ? Loginphone : Signupphone),
+                          "Sent to " + FinalPhoneNumber,
                           style: TextStyle(
                               fontSize: mQuery.size.height * 0.018,
                               fontFamily: 'SatoshiRegular',

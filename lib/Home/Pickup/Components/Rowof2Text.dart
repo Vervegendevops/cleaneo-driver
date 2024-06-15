@@ -507,6 +507,7 @@ class _NewOrdersssState extends State<NewOrdersss> {
                       itemCount: orders.length,
                       itemBuilder: (context, index) {
                         int Count = jsonDecode(orders[index]['status']).length;
+                        print("Count  : $Count");
                         int countItems =
                             jsonDecode(orders[index]['Items']).length;
 

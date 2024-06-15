@@ -3,6 +3,7 @@ import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Screens/Auth/Login.dart';
 import 'package:cleaneo_driver_app/Screens/Auth/OTP.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
+import 'package:cleaneo_driver_app/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -363,6 +364,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     onSubmitted: (value) {
                                       setState(() {
                                         Signupphone = value;
+                                        FinalPhoneNumber = value;
                                       });
                                     },
                                     onEditingComplete: () {
@@ -876,7 +878,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     if (Signupphone.length == 10 &&
                                         Signupemail.length > 0 &&
                                         Signupname.length > 0) {
-                                      fetchResponse(Signupphone);
+                                      fetchResponse(FinalPhoneNumber);
                                       // Navigator.push(context,
                                       //     MaterialPageRoute(builder: (context) {
                                       //   return OTPPage();

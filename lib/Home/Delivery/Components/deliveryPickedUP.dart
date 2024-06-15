@@ -394,13 +394,13 @@ class _DeliveryNewPickedUpOrdersState extends State<DeliveryNewPickedUpOrders> {
                         int countItems =
                             jsonDecode(orders[index]['Items']).length;
 
-                        return Count == 7
+                        return Count >= 6
                             ? GestureDetector(
                                 onTap: () {
                                   // _showOrderDetails(context, orders[index]);
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return PickupMap2(order: orders[index]);
+                                    return PickupMap(order: orders[index]);
                                   }));
                                 },
                                 child: Container(
@@ -614,32 +614,38 @@ class _DeliveryNewPickedUpOrdersState extends State<DeliveryNewPickedUpOrders> {
                                       SizedBox(
                                         height: mQuery.size.height * 0.023,
                                       ),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.9,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.045,
-                                        decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10),
-                                            bottomRight: Radius.circular(10),
-                                          ),
-                                          color: Color(0xff29b2fe),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            // AppLocalizations.of(context)!.acceptorder,
-                                            "VIEW ORDER",
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13,
-                                              fontFamily: 'SatoshiBold',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                      Count == 6
+                                          ? Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.9,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.045,
+                                              decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(10),
+                                                  bottomRight:
+                                                      Radius.circular(10),
+                                                ),
+                                                color: Color(0xff29b2fe),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  // AppLocalizations.of(context)!.acceptorder,
+                                                  "VIEW ORDER",
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 13,
+                                                    fontFamily: 'SatoshiBold',
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          : Container(),
                                     ],
                                   ),
                                 ),

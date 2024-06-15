@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cleaneo_driver_app/Global/global.dart';
 import 'package:cleaneo_driver_app/Screens/Auth/OTP.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
+import 'package:cleaneo_driver_app/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
@@ -283,6 +284,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onSubmitted: (value) {
                                     setState(() {
                                       Loginphone = value;
+                                      FinalPhoneNumber = value;
                                     });
                                   },
                                   inputFormatters: <TextInputFormatter>[
@@ -735,8 +737,9 @@ class _LoginPageState extends State<LoginPage> {
                                   setState(() {
                                     ispressed = true;
                                   });
-                                  if (Loginphone.length == 10) {
-                                    fetchResponse(Loginphone);
+                                  if (FinalPhoneNumber.length == 10) {
+                                    auth == 'login';
+                                    fetchResponse(FinalPhoneNumber);
                                   } else {
                                     setState(() {
                                       ispressed = false;

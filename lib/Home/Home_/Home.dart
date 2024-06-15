@@ -614,7 +614,7 @@ class _NewOrdersState extends State<NewOrders> {
     fetchResponse();
   }
 
-  void _showOrderDetails(BuildContext context, Map order) {
+  void _showOrderDetails(BuildContext context, Map order, int Count) {
     List items = jsonDecode(order['Items']);
 
     Map<String, List<String>> groupedItems = {};
@@ -929,7 +929,9 @@ class _NewOrdersState extends State<NewOrders> {
                                                           MaterialPageRoute(
                                                               builder:
                                                                   (context) {
-                                                        return PickUp();
+                                                        return Count == 1
+                                                            ? PickUp()
+                                                            : Delivery();
                                                       }));
                                                       // You can handle the response here if needed
                                                     } else {
@@ -1012,7 +1014,7 @@ class _NewOrdersState extends State<NewOrders> {
 
                   return GestureDetector(
                     onTap: () {
-                      _showOrderDetails(context, orders[index]);
+                      _showOrderDetails(context, orders[index], Count);
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
