@@ -9,6 +9,7 @@ import 'package:cleaneo_driver_app/Screens/Driver_Onboarding/Verifying.dart';
 import 'package:cleaneo_driver_app/Screens/WelcomePage.dart';
 import 'package:cleaneo_driver_app/end.dart';
 import 'package:cleaneo_driver_app/main.dart';
+import 'package:flutter/widgets.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
@@ -103,6 +104,7 @@ class _OTPPageState extends State<OTPPage> {
   @override
   Widget build(BuildContext context) {
     var mQuery = MediaQuery.of(context);
+    print(auth);
     final defaultPinTheme = PinTheme(
         width: mQuery.size.width * 0.23,
         height: mQuery.size.height * 0.1,
@@ -215,12 +217,17 @@ class _OTPPageState extends State<OTPPage> {
                           },
                         ),
                         SizedBox(height: mQuery.size.height * 0.1),
-                        Text(
-                          "Problems receiving the code?",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: mQuery.size.height * 0.018,
-                              fontFamily: 'SatoshiBold'),
+                        GestureDetector(
+                          onTap: () {
+                            print(authType);
+                          },
+                          child: Text(
+                            "Problems receiving the code?",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: mQuery.size.height * 0.018,
+                                fontFamily: 'SatoshiBold'),
+                          ),
                         ),
                         SizedBox(height: mQuery.size.height * 0.008),
                         GestureDetector(
@@ -268,7 +275,7 @@ class _OTPPageState extends State<OTPPage> {
                             });
                             if (OTP == otp) {
                               print("same");
-                              print(auth);
+                              print(authType);
                               print(loginData['ID']);
                               if (loginData == {}) {
                                 UserData.write('ID', UserID);
@@ -280,7 +287,7 @@ class _OTPPageState extends State<OTPPage> {
                                 UserData.write('phone', loginData['phone']);
                               }
 
-                              auth == 'login'
+                              authType == 'login'
                                   ? Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
                                       return LoginStatus == 'P'
@@ -292,6 +299,7 @@ class _OTPPageState extends State<OTPPage> {
                                       return DL();
                                     }));
                             } else {
+                              print(auth);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('Wrong OTP. Try again.'),

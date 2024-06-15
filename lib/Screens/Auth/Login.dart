@@ -33,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    authType = 'login';
     Future.delayed(Duration.zero, () {
       setState(() {
         _opacity = 1.0;
@@ -140,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     auth = 'login';
+    print(auth);
     var mQuery = MediaQuery.of(context);
     return AnimatedOpacity(
       opacity: _opacity, // Use the opacity variable
@@ -738,7 +740,8 @@ class _LoginPageState extends State<LoginPage> {
                                     ispressed = true;
                                   });
                                   if (FinalPhoneNumber.length == 10) {
-                                    auth == 'login';
+                                    auth = 'login';
+                                    print('fetch response');
                                     fetchResponse(FinalPhoneNumber);
                                   } else {
                                     setState(() {

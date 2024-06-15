@@ -3,6 +3,7 @@ import 'package:cleaneo_driver_app/Screens/Auth/Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+String authType = '';
 String auth = '';
 String OTP = '';
 
@@ -15,8 +16,16 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    authType = '';
+  }
+
+  @override
   Widget build(BuildContext context) {
     auth = '';
+
     var mQuery = MediaQuery.of(context);
     return WillPopScope(
       onWillPop: () async {
@@ -45,6 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          auth = 'Signup';
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                             return SignUpPage();
@@ -71,6 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       GestureDetector(
                         onTap: () {
+                          auth = 'login';
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                             return const LoginPage();

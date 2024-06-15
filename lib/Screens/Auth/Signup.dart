@@ -38,6 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    authType = 'Signup';
     Future.delayed(Duration.zero, () {
       setState(() {
         _opacity = 1.0;
@@ -878,6 +879,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     if (Signupphone.length == 10 &&
                                         Signupemail.length > 0 &&
                                         Signupname.length > 0) {
+                                      auth = 'Signup';
                                       fetchResponse(FinalPhoneNumber);
                                       // Navigator.push(context,
                                       //     MaterialPageRoute(builder: (context) {

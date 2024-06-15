@@ -10,7 +10,12 @@ import 'Home/BotNav.dart';
 String FinalPhoneNumber = '';
 Future<void> main() async {
   await GetStorage.init();
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(DevicePreview(
+    builder: (context) {
+      return MyApp();
+    },
+  ));
 }
 
 class MyApp extends StatefulWidget {
