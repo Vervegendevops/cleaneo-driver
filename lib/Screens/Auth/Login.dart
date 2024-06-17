@@ -281,6 +281,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onChanged: (value) {
                                     setState(() {
                                       Loginphone = value;
+                                      FinalPhoneNumber = value;
                                     });
                                   },
                                   onSubmitted: (value) {

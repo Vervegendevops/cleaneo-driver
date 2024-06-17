@@ -360,6 +360,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     onChanged: (value) {
                                       setState(() {
                                         Signupphone = value;
+                                        FinalPhoneNumber = value;
                                       });
                                     },
                                     onSubmitted: (value) {
